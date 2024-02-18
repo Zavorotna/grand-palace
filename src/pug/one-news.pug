@@ -1,0 +1,53 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Grand Palace - сучасне житло у місті Хмельницький
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    link(rel="stylesheet" href="css/styles.css")
+  body(tabindex="0")
+    .body-wrapper
+      include components/vars
+      include components/mixins
+      include components/header
+      main.main.container
+        .news-card 
+            .news-gallery 
+                img(src="img/news-photo1.jpg", alt="")
+                .gallery-sm-photoes
+                    .photo-slider 
+                        img(src="img/news-photo1.jpg", alt="")
+                    .photo-slider 
+                        img(src="img/news-photo1.jpg", alt="")
+            .news-description
+                h1 Старт продажу нових черг у grand palace розпочато!
+                hr
+                h3 Старт продажу нових черг Grand Palace розпочато!
+                p Поспішіть  придбати квартиру у ЖК бізнес-класу в центрі Хмельницького. Закритий двір, панорама на місто, підземний паркінг, офісні приміщення, хімчистка, парковка, дитячий майданчик.
+
+                p Ми відкрили продажі на квартири другої черги!
+                .table-news 
+                    .tr-news 
+                        p.td Загальна кількість квартир -&nbsp;
+                        p 354
+                    .tr-news 
+                        p.td Терміни здачі -&nbsp; 
+                        p II квартал 2025 року та II квартал 2026 року.
+                hr
+                .table-news.table-td-styled
+                    .tr-news
+                        p.td Завітайте у відділ продажу 
+                        p.news-location м. Хмельницький вул. Свободи, 14
+                    .tr-news
+                        p.td Або телефонуйте
+                        p 
+                            a(href="tel:+380980555500")  (098) 055 55 00
+                a.short-description__btn.btn(href="#") усі новини
+
+
+      include components/footer
+    script(src="js/scripts.js" defer)

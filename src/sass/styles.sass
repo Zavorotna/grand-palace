@@ -169,6 +169,8 @@ figure
 //       height: 50vh
 
 
+// сторінка всіх новин
+
 .text-news
   font-size: 24px
   line-height: 1.5em
@@ -217,3 +219,94 @@ figure.news
   svg
     transform: rotate(-180deg)
 
+// картка новини
+
+.tr-news
+  display: flex
+  flex-wrap: wrap
+  p
+    margin: 0 !important
+
+
+.table-news 
+  .tr-news:first-child
+    margin-bottom: 20px
+
+.news-description
+  h1
+    font-size: 30px
+    line-height: 1.2em
+    text-transform: uppercase
+    color: #333333
+    font-weight: 500
+    font-family: "Roboto Slab"
+  h3
+    font-size: 18px
+    line-height: 1.5em
+    color: #333333
+    font-weight: 500
+    font-family: "Roboto"
+    margin-bottom: 25px
+  p
+    line-height: 1.5em
+    margin-bottom: 30px
+
+  .table-news .tr-news .td
+    font-size: 18px
+    line-height: 27px
+    color: #333333
+    font-weight: 500
+    font-family: "Roboto"
+
+  hr
+    border: none
+    border-bottom: 1px solid #9c1a1a
+    margin-bottom: 35px
+    padding-top: 35px
+
+  a.btn
+    padding: 10px 56px 13px
+.table-td-styled
+  margin-bottom: 45px
+  .tr-news .td
+    padding-right: 20px
+  
+.news-location
+  position: relative
+  &::before
+    content: ''
+    position: absolute
+    width: 20px
+    height: 15px
+    background: url(../img/location.svg)
+    background-size: cover
+
+.news-card
+  padding: 50px 0 100px 0
+
+.gallery-sm-photoes,
+.news-card
+  width: 100%
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  column-gap: 20px
+  row-gap: 20px
+
+
+
+.gallery-sm-photoes
+  padding-top: 20px
+
+
+.photo-slider 
+  width: 100%
+  +media(570)
+    width: 48%
+
+.news-gallery,
+.news-description
+  width: 100%
+  +media(1260)
+    width: 49%
+    min-width: 555px
