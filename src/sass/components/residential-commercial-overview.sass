@@ -50,3 +50,36 @@
   &.commercial-overview
     .short-description
       justify-content: flex-start
+
+.comercial-galery
+  display: grid
+  grid-template-columns: 1fr
+  +media(768)
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr 1fr
+
+.galery-block
+  position: relative
+
+.text-block-galery
+  position: absolute
+  bottom: 10%
+  left: 7%
+  z-index: 2
+
+.number
+  font-size: 40px
+  text-transform: uppercase
+  color: #ffffff
+  font-weight: 500
+  font-family: "Roboto Slab"
+  +media(1024)
+    font-size: 60px
+
+.text-galery
+  font-size: 16px
+  color: #ffffff
+  font-weight: 400
+  font-family: "Roboto"
+  +media(1024)
+    font-size: 22px
