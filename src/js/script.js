@@ -385,4 +385,55 @@ document.addEventListener("DOMContentLoaded", function () {
       touchEndSlider
     };
   }
+  if (document.querySelectorAll("figure.news")) {
+
+    let newsFigure = document.querySelectorAll("figure.news"),
+      newsSlideLeft = document.querySelector("#newsToLeft"),
+      newsSlideRight = document.querySelector("#newsToRight"),
+      figuresPerSlide = 3, // по скільки новин показувати на один слайд
+      currentLastPictureFigure = [...newsFigure].length > figuresPerSlide ? figuresPerSlide : Number([...newsFigure].length),
+      currentPage = currentLastPictureFigure
+
+    function clearFigures() {
+      for (let i = 0; i < [...newsFigure].length; i++) {
+        if (i < figuresPerSlide) {
+          newsFigure[i].style.display = "block"
+        } else {
+          newsFigure[i].style.display = "none"
+        }
+      }
+    }
+
+    clearFigures()
+
+    function newsSlide(direction, currPage) {
+      if (direction == "left") {
+        // при клікові на кнопку слайд лефт - потрібно показувати минулі 3 картки, якщо їх немає - нічого не змінювати
+      } else if (direction == "right") {
+
+        for (let i = currPage - figuresPerSlide; i < currPage; i++) {
+          newsFigure[i].style.display = "none"
+        }
+
+        for (let i = currPage; i < Number(currPage) + figuresPerSlide; i++) {
+          if (newsFigure[i]) {
+            newsFigure[i].style.display = "block"
+          } else {
+            break
+          }
+        }
+
+      }
+      currentPage += figuresPerSlide
+    }
+
+    newsSlideLeft.addEventListener("click", function() {
+      newsSlide("left", currentPage)
+    })
+    newsSlideRight.addEventListener("click", function(event) {
+      event.preventDefault()
+      newsSlide("right", currentPage)
+    })
+    
+  }
 })
