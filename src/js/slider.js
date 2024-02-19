@@ -20,87 +20,144 @@ document.addEventListener("DOMContentLoaded", function () {
     startSlider()
   }
 
+  // попап з текстом
+  function readMoreUpgrade() {
+    const btnReadMore = document.querySelectorAll(".btn-more"),
+      btnCancel = document.querySelectorAll(".btn-more-cancel"),
+      desriptMore = document.querySelectorAll(".text-comment-block")
+
+    btnReadMore.forEach((item, index) => {
+      item.addEventListener("click", function (e) {
+        console.log(item)
+        e.preventDefault()
+        desriptMore[index].classList.add("visible")
+        btnCancel[index].style.display = "block"
+        item.style.display = "none"
+      })
+    })
+
+    btnCancel.forEach((item, index) => {
+      item.addEventListener("click", function (e) {
+        e.preventDefault()
+        desriptMore[index].classList.remove("visible")
+        btnReadMore[index].style.display = "block"
+        item.style.display = "none"
+      })
+    })
+  }
+
   //слайдер на відгуки
-  const carousel = document.querySelector('.carousel'),
-    prevButton = document.querySelector('.left'),
-    nextButton = document.querySelector('.right')
 
-  let items = [...document.querySelectorAll(".carousel-item")]
+  if (document.querySelector('.carousel')) {
 
-  const itemWidth = items[0].offsetWidth + 60
+    const carousel = document.querySelector('.carousel'),
+      prevButton = document.querySelector('.left'),
+      nextButton = document.querySelector('.right')
 
-  let currentIndex = 0,
-    isAnimating = false
+    let items = [...document.querySelectorAll(".carousel-item")]
 
-  function updateCarousel() {
-    while (carousel.firstChild) {
-      carousel.removeChild(carousel.firstChild)
-    }
+    const itemWidth = items[0].offsetWidth + 60
 
-    const firstClone = items[items.length - 1].cloneNode(true)
-    firstClone.style.left = `-${itemWidth}px`
-    carousel.insertAdjacentElement("afterbegin", firstClone)
-
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i].cloneNode(true)
-      item.style.left = i * itemWidth + "px"
-      carousel.appendChild(item)
-    }
-  }
-
-  updateCarousel()
-
-  function goToIndex(index) {
-    isAnimating = true
-
-    const distance = -index * itemWidth
-
-    currentIndex = (currentIndex + items.length + index) % items.length
-
-    carousel.style.transition = 'transform .5s ease-in-out'
-    carousel.style.transform = `translateX(${distance}px)`
-
-    setTimeout(() => {
-      carousel.style.transition = 'none'
-      carousel.style.transform = 'none'
+    let currentIndex = 0,
       isAnimating = false
-      updateCarousel()
-    }, 500)
-  }
 
-  nextButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    items.push(items.shift())
-    goToIndex(1)
-  })
-  
-  prevButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    items.unshift(items.pop())
-    goToIndex(-1)
-  })
+    function updateCarousel() {
+      while (carousel.firstChild) {
+        carousel.removeChild(carousel.firstChild)
+      }
 
-  let touchStartX = 0,
-    touchEndX = 0
+      const firstClone = items[items.length - 1].cloneNode(true)
+      firstClone.style.left = `-${itemWidth}px`
+      carousel.insertAdjacentElement("afterbegin", firstClone)
 
-  carousel.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX
-  })
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i].cloneNode(true)
+        item.style.left = i * itemWidth + "px"
+        carousel.appendChild(item)
+      }
+      readMoreUpgrade()
+    }
 
-  carousel.addEventListener('touchmove', (e) => {
-    touchEndX = e.touches[0].clientX
-  })
+    updateCarousel()
 
-  carousel.addEventListener('touchend', () => {
-    const touchDiff = touchStartX - touchEndX
-    if (touchDiff > 50) {
+    function goToIndex(index) {
+      isAnimating = true
+
+      const distance = -index * itemWidth
+
+      currentIndex = (currentIndex + items.length + index) % items.length
+
+      carousel.style.transition = 'transform .5s ease-in-out'
+      carousel.style.transform = `translateX(${distance}px)`
+
+      setTimeout(() => {
+        carousel.style.transition = 'none'
+        carousel.style.transform = 'none'
+        isAnimating = false
+        updateCarousel()
+      }, 500)
+    }
+
+    nextButton.addEventListener('click', (e) => {
+      e.preventDefault()
       items.push(items.shift())
       goToIndex(1)
-    } else if (touchDiff < -50) {
+    })
+
+    prevButton.addEventListener('click', (e) => {
+      e.preventDefault()
       items.unshift(items.pop())
       goToIndex(-1)
+    })
+
+    let touchStartX = 0,
+      touchEndX = 0
+
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX
+    })
+
+    carousel.addEventListener('touchmove', (e) => {
+      touchEndX = e.touches[0].clientX
+    })
+
+    carousel.addEventListener('touchend', () => {
+      const touchDiff = touchStartX - touchEndX
+      if (touchDiff > 50) {
+        items.push(items.shift())
+        goToIndex(1)
+      } else if (touchDiff < -50) {
+        items.unshift(items.pop())
+        goToIndex(-1)
+      }
+    })
+  }
+
+  //popup
+  if(document.querySelector(".popap-block")) {
+    const bgDark = document.querySelector(".opacity-bg"),
+      popupForm = document.querySelector(".popap-more-info"),
+      cancelPopap = document.querySelector(".cancel-popap"),
+      openPopap = document.querySelector(".open-popap")
+
+    bgDark.addEventListener("click", function (e) {
+      e.preventDefault()
+      cancelPopapBg ()
+    })
+    cancelPopap.addEventListener("click", function (e){
+      e.preventDefault()
+      cancelPopapBg ()
+    })
+    openPopap.addEventListener("click", function (e) {
+      e.preventDefault()
+      popupForm.style.display = "block"
+      bgDark.style.display = "block"
+    })
+    function cancelPopapBg() {
+      bgDark.style.display = "none"
+      popupForm.style.display = "none"
     }
-  })
+  }
 
   let //floors navigation for slider
     floorNumber = document.getElementsByName("floor"),
@@ -126,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
       }
     }
-
     //slider
     let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
       rc_btn_next = document.querySelector(".btn-arrow-next"),
