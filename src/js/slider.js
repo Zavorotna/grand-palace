@@ -1,5 +1,20 @@
 // residential/commercial (rc) slider
 
+ //slider main img
+ if(document.querySelectorAll('.slider-images img')) {
+  const images = document.querySelectorAll('.slider-images img')
+  let currentImgIndex = 0
+  function showNextImage() {
+    images[currentImgIndex].classList.add('active')
+    currentImgIndex = (currentImgIndex + 1) % images.length
+    images[currentImgIndex].classList.remove('active')
+  }
+
+  let headerSlideInterval = setInterval(showNextImage, 3000)
+  
+  showNextImage()
+  
+}
 let //floors navigation for slider
     floorNumber = document.getElementsByName("floor"),
     floors = document.querySelectorAll(".floor"),
