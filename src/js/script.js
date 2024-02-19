@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (newsFigure[i]) {
             newsFigure[i].style.display = "block"
           } else {
-            break
+            currentPage = 0
           }
         }
 
