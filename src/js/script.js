@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 
   // let headerSlideInterval = setInterval(showNextImage, 3000)
-  
+
   // showNextImage()
 
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
@@ -398,18 +398,21 @@ document.addEventListener("DOMContentLoaded", function () {
       touchEndSlider
     };
   }
-  if (document.querySelectorAll("figure.news")) {
+  if (document.querySelectorAll("figure.news").length > 0) {
 
     let newsFigure = document.querySelectorAll("figure.news"),
       newsSlideLeft = document.querySelector("#newsToLeft"),
       newsSlideRight = document.querySelector("#newsToRight"),
-      figuresPerSlide = 3, // по скільки новин показувати на один слайд
-      currentLastPictureFigure = [...newsFigure].length > figuresPerSlide ? figuresPerSlide : Number([...newsFigure].length),
-      currentPage = currentLastPictureFigure
+      figuresPerSlide = 3,
+      currentPage = 0
 
-    function clearFigures() {
-      for (let i = 0; i < [...newsFigure].length; i++) {
-        if (i < figuresPerSlide) {
+    function showSlides() {
+      const totalFigures = newsFigure.length
+      const startIndex = currentPage * figuresPerSlide
+      const endIndex = Math.min(startIndex + figuresPerSlide, totalFigures)
+
+      for (let i = 0; i < totalFigures; i++) {
+        if (i >= startIndex && i < endIndex) {
           newsFigure[i].style.display = "block"
         } else {
           newsFigure[i].style.display = "none"
@@ -417,36 +420,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    clearFigures()
 
-    function newsSlide(direction, currPage) {
-      if (direction == "left") {
-        // при клікові на кнопку слайд лефт - потрібно показувати минулі 3 картки, якщо їх немає - нічого не змінювати
-      } else if (direction == "right") {
-
-        for (let i = currPage - figuresPerSlide; i < currPage; i++) {
-          newsFigure[i].style.display = "none"
-        }
-
-        for (let i = currPage; i < Number(currPage) + figuresPerSlide; i++) {
-          if (newsFigure[i]) {
-            newsFigure[i].style.display = "block"
-          } else {
-            currentPage = 0
-          }
-        }
-
+    function updatePage(direction) {
+      const totalPages = Math.ceil(newsFigure.length / figuresPerSlide)
+      if (direction === "next" && currentPage < totalPages - 1) {
+        currentPage++
+      } else if (direction === "prev" && currentPage > 0) {
+        currentPage--
       }
-      currentPage += figuresPerSlide
     }
 
-    newsSlideLeft.addEventListener("click", function () {
-      newsSlide("left", currentPage)
-    })
-    newsSlideRight.addEventListener("click", function (event) {
+    newsSlideLeft.addEventListener("click", function (event) {
       event.preventDefault()
-      newsSlide("right", currentPage)
+      updatePage("prev")
+      showSlides()
     })
 
+    newsSlideRight.addEventListener("click", function (event) {
+      event.preventDefault()
+      updatePage("next")
+      showSlides()
+    })
+
+    // Відображення перших трьох карток за замовчуванням
+    showSlides()
   }
+
 })
