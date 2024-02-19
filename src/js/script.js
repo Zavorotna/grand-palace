@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //slider main img
-  const images = document.querySelectorAll('.slider-images img')
-  let currentImgIndex = 0
+  // //slider main img
+  // const images = document.querySelectorAll('.slider-images img')
+  // let currentImgIndex = 0
 
-  function showNextImage() {
-    images[currentImgIndex].classList.remove('active')
-    currentImgIndex = (currentImgIndex + 1) % images.length
-    images[currentImgIndex].classList.add('active')
-  }
+  // function showNextImage() {
+  //   images[currentImgIndex].classList.remove('active')
+  //   currentImgIndex = (currentImgIndex + 1) % images.length
+  //   images[currentImgIndex].classList.add('active')
+  // }
 
-  let headerSlideInterval = setInterval(showNextImage, 3000)
+  // let headerSlideInterval = setInterval(showNextImage, 3000)
   
-  showNextImage()
+  // showNextImage()
 
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
     header = document.querySelector(".header"),
@@ -432,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (newsFigure[i]) {
             newsFigure[i].style.display = "block"
           } else {
-            break
+            currentPage = 0
           }
         }
 
