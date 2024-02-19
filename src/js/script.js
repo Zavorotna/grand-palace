@@ -1,17 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //slider main img
-  const images = document.querySelectorAll('.slider-images img')
-  let currentImgIndex = 0
-
-  function showNextImage() {
-    images[currentImgIndex].classList.remove('active')
-    currentImgIndex = (currentImgIndex + 1) % images.length
-    images[currentImgIndex].classList.add('active')
-  }
-
-  let headerSlideInterval = setInterval(showNextImage, 3000)
-  
-  showNextImage()
 
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
     header = document.querySelector(".header"),
