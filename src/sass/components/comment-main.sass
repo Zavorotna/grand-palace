@@ -1,6 +1,8 @@
 .comment-block
+    max-height: 600px
     padding: 60px 0 50px
     font-family: "Roboto"
+    overflow: hidden
 
 .comment-block,
 .img-block_comment,
@@ -9,6 +11,10 @@
     display: flex
     justify-content: space-between
     column-gap: 60px
+    row-gap: 60px
+    flex-wrap: wrap
+    +media(1024)
+        flex-wrap: nowrap
 
 .img-block_comment
     justify-content: flex-start
@@ -16,6 +22,7 @@
     padding-bottom: 15px
 
 .comment
+    min-width: 42.7vw
     padding: 25px
     background-color: #faf7f3
     border: 1px solid #333

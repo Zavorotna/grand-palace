@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+  
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
     header = document.querySelector(".header"),
     headerHeight = header.getBoundingClientRect().height

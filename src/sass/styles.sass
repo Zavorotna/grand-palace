@@ -226,10 +226,25 @@ figure.news
   justify-content: center
   margin-bottom: 100px
 
+.left,
+.right
+  position: relative
+  svg
+    position: absolute
+    top: 50%
+    left: 50%
+    fill: #fff
+    transform: translate(-50%, -50%)
+
+.left
+  svg
+    transform: translate(-50%, -50%) rotate(-180deg)
+
 .news-arrow-svg
   svg
     width: 30px
     fill: #fff
+
 .to-left-news-arr
   svg
     transform: rotate(-180deg)
