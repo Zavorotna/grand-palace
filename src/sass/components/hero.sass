@@ -1,7 +1,9 @@
 .hero
   position: relative
   margin-bottom: 50px
-  background: $bg url(../img/hero.jpg) center bottom/cover no-repeat
+  height: 95vh
+  background: $bg center bottom/cover no-repeat
+  overflow: hidden
   &::before
     content: ''
     position: absolute
@@ -11,9 +13,27 @@
     height: 100%
     background-color: rgba(13, 27, 41, .55)
     filter: blur(2px)
+    z-index: 1
     +media(1024)
       width: 50%
       backdrop-filter: blur(0.5px)
+  
+  .slider-images
+    position: absolute
+    top: 0
+    display: flex
+    width: 100%
+    height: 100%
+    img
+      transition: all .5s ease
+      position: absolute
+      width: 100%
+      height: 100%
+      object-fit: cover
+      opacity: 0
+    img.active
+      opacity: 1
+
   .left-side
     position: relative
     flex: 1 0 50%
@@ -29,13 +49,15 @@
       flex: 0 0 50%
       max-width: 50%
     +media(1420)
-      padding-top: 210px
+      padding-top: 110px
       padding-bottom: 180px
     +media(1860)
-      padding-top: 250px
+      padding-top: 150px
       padding-bottom: 215px
 
   .tagline
+    position: relative
+    z-index: 2
     margin-bottom: 15px
     font: 500 $fTextSecond 'Roboto Slab', Arial, sans-serif
     text-transform: uppercase
@@ -53,4 +75,14 @@
     +media(1024)
       font-size: $fTextSecond
     .text
+      position: relative
       display: block
+      padding-bottom: 46px
+      z-index: 2
+
+.open-popap
+  position: relative
+  display: inline-block
+  padding: 15px 56px
+  background-color: #9c1a1a
+  z-index: 3
