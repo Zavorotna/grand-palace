@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCancel[index].style.display = "block"
         item.style.display = "none"
       })
-    })
+    })  
 
     btnCancel.forEach((item, index) => {
       item.addEventListener("click", function (e) {
@@ -110,27 +110,27 @@ document.addEventListener("DOMContentLoaded", function () {
       goToIndex(-1)
     })
 
-    let touchStartX = 0,
-      touchEndX = 0
+    // let touchStartX = 0,
+    //   touchEndX = 0
 
-    carousel.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX
-    })
+    // carousel.addEventListener('touchstart', (e) => {
+    //   touchStartX = e.touches[0].clientX
+    // })
 
-    carousel.addEventListener('touchmove', (e) => {
-      touchEndX = e.touches[0].clientX
-    })
+    // carousel.addEventListener('touchmove', (e) => {
+    //   touchEndX = e.touches[0].clientX
+    // })
 
-    carousel.addEventListener('touchend', () => {
-      const touchDiff = touchStartX - touchEndX
-      if (touchDiff > 50) {
-        items.push(items.shift())
-        goToIndex(1)
-      } else if (touchDiff < -50) {
-        items.unshift(items.pop())
-        goToIndex(-1)
-      }
-    })
+    // carousel.addEventListener('touchend', () => {
+    //   const touchDiff = touchStartX - touchEndX
+    //   if (touchDiff > 50) {
+    //     items.push(items.shift())
+    //     goToIndex(1)
+    //   } else if (touchDiff < -50) {
+    //     items.unshift(items.pop())
+    //     goToIndex(-1)
+    //   }
+    // })
   }
 
   //popup

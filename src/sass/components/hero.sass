@@ -1,40 +1,39 @@
 .popap-block
   position: relative
-  font-size: 18px
+  font-size: 14px
   color: #3c3839
   font-weight: 400
   font-family: "Roboto"
+  +media(1024)
+    font-size: 18px
   input,
   textarea
     width: 100%
     height: 100%
-    box-sizing: border-box
     padding: 11px
     outline: none
     border: 1px solid #333333
+    box-sizing: border-box
   textarea
-    min-height: 121
+    font-size: 18px
+    color: #3c3839
+    font-weight: 400
+    font-family: "Roboto"
     resize: none
   button
     position: relative
     top: 0
     left: 50%
-    padding: 15px 50px
+    padding: 10px 50px
     color: #ffffff
     text-align: center
     text-transform: uppercase
     background-color: #9c1a1a
     transform: translateX(-50%)
     border: none
-
-.flex-popap
-  display: flex
-  justify-content: space-between
-  column-gap: 20px
-  // row-gap: 20px
-
-.label-flex
-  flex-direction: column
+    cursor: pointer
+    +media(1024)
+      padding: 15px 50px
 
 .opacity-bg
   display: none
@@ -47,15 +46,58 @@
   opacity: 0.6
   z-index: 11
 
+.popap-header-line
+  display: flex
+  justify-content: center
+  align-items: center
+  +media(1024)
+    margin-bottom: 15px
+
+.popap-input_block
+  flex-wrap: wrap
+  +media(1024)
+    flex-wrap: nowrap
+
+.flex-popap
+  display: flex
+  justify-content: space-between
+  column-gap: 20px
+
+.label-flex
+  flex-direction: column
+
+.input-popap
+  width: 100%
+  margin-bottom: 10px
+  +media(1024)
+    width: 250px
+    margin-bottom: 20px
+
+.question
+  min-height: 80px
+  max-height: 100px
+  +media(1024)
+    min-height: 120px
+    max-height: 150px
+
+.question,
+.input-popap
+  label
+    padding-bottom: 5px
+
 .popap-more-info
   position: fixed
+  max-width: 80vw
+  max-height: 90vh
   top: 50%
   left: 50%
-  padding: 50px 40px
+  padding: 30px 20px
   transform: translate(-50%, -50%)
   background-color: #f3ece2
   z-index: 12
   display: none
+  +media(1024)
+    padding: 50px 40px
 
 .cancel-popap
   position: absolute
@@ -66,8 +108,33 @@
     fill: #9c1a1a
 
 .radio-btn
-  margin-bottom: 26px
-
+  font-size: 12px
+  padding-top: 10px
+  margin-bottom: 16px
+  +media(1024)
+    font-size: 18px
+    padding-top: 30px
+    margin-bottom: 26px
+  p
+    margin-bottom: 8px
+  input
+    display: none
+  input + label
+    position: relative
+    padding-left: 26px
+    &::before
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      width: 16px
+      height: 16px
+      background-color: #fff
+      border: 1px solid #333
+  input
+    &:checked + label
+      &::before
+        background-color: #9c1a1a
 .hero
   position: relative
   margin-bottom: 50px
