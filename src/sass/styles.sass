@@ -226,10 +226,25 @@ figure.news
   justify-content: center
   margin-bottom: 100px
 
+.left,
+.right
+  position: relative
+  svg
+    position: absolute
+    top: 50%
+    left: 50%
+    fill: #fff
+    transform: translate(-50%, -50%)
+
+.left
+  svg
+    transform: translate(-50%, -50%) rotate(-180deg)
+
 .news-arrow-svg
   svg
     width: 30px
     fill: #fff
+
 .to-left-news-arr
   svg
     transform: rotate(-180deg)
@@ -325,3 +340,33 @@ figure.news
   +media(1260)
     width: 49%
     min-width: 555px
+
+.news-text
+  font-size: 24px
+  line-height: 36px
+  color: #ffffff
+  font-weight: 400
+  font-family: "Roboto"
+  opacity: 1
+
+
+.hero-news
+  position: relative
+  img
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    object-fit: cover
+  .container
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+    z-index: 1
+
+.hero.hero-news:before
+  height: 50%
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 1
