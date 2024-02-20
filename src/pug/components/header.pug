@@ -1,37 +1,43 @@
-header.header
+header.header(itemscope itemtype="http://schema.org/WPHeader")
   .container
-    .header-info__items
-      .header-info__item.menu__icon
-        .icon__menu <!--open-->
+    .header-info__items(itemscope itemtype="http://schema.org/Organization")
+      .header-info__item.menu__icon(itemscope itemtype="http://schema.org/SiteNavigationElement")
+        .icon__menu
           span
-      .header-info__item.header__phone.phone-list
-        a.phone-link(href='tel:+380980555500')
-          +svg('phone')
-          |(098)&nbsp;05-55-500
-      .header-info__item.header__logo
-        a.menu__logo(href='./')
-          img(src='img/logo-grand-palace.svg' alt='Grand Palace - житловий комплекс')
-      .header-info__item.header__social.social-list
-        a.social-link(href='https://www.facebook.com/GrandPalace.km' target="_blank")
+      .header-info__item.header__phone.phone-list(itemscope itemtype="http://schema.org/SiteNavigationElement")
+        a.phone-link(href='tel:+380980555500', itemprop='url', content="+380980555500")
+          +svg('phone') (098)&nbsp;05-55-500
+      .header-info__item.header__logo(itemscope itemtype="http://schema.org/Organization")
+        a.menu__logo(href='./', itemprop='url')
+          img(src='img/logo-grand-palace.svg' alt='Grand Palace - житловий комплекс', itemprop='logo', title="Grand Palace - житловий комплекс")
+      .header-info__item.header__social.social-list(itemscope itemtype="http://schema.org/SiteNavigationElement")
+        a.social-link(href='https://www.facebook.com/GrandPalace.km' target="_blank", itemprop='sameAs')
           +svg('fb', 31, 31)
-        a.social-link(href='https://www.instagram.com/grand_palace_km/' target="_blank")
+        a.social-link(href='https://www.instagram.com/grand_palace_km/' target="_blank", itemprop='sameAs')
           object(class='icon' type='image/svg+xml' data='img/instagram.svg' width='31' height='31')
-      .header-info__item.header__lng-toggle
-        a.active(href='#' data-lang="uk") Укр
-        a(href='#' data-lang="ru") Рус
-    nav.header__menu
+      .header-info__item.header__lng-toggle(itemscope itemtype="http://schema.org/SiteNavigationElement")
+        a.active(href='#' data-lang="uk", itemprop='url') Укр
+        a(href='#' data-lang="ru", itemprop='url') Рус
+    nav.header__menu(itemscope itemtype="http://schema.org/SiteNavigationElement")
       ul.menu__list
-        li
-          a.menu__link(href='residential.html') Житлова нерухомість
-        li
-          a.menu__link(href='commercial.html') Комерційна нерухомість
-        li
-          a.menu__link(href= location + "#generalplan") Загальний план
-        li
-          a.menu__link(href= location + "#overview") Переваги
-        li
-          a.menu__link(href= location + "#progress") Хід будівництва
-        li
-          a.menu__link(href= location + "#documentation") Документація
-        li
-          a.menu__link(href='contacts.html') Контакти
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href='residential.html', itemprop='url') 
+            span(itemprop='name') Житлова нерухомість
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href='commercial.html', itemprop='url') 
+            span(itemprop='name') Комерційна нерухомість
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href= location + "#generalplan", itemprop='url') 
+            span(itemprop='name') Загальний план
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href= location + "#overview", itemprop='url') 
+            span(itemprop='name') Переваги
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href= location + "#progress", itemprop='url') 
+            span(itemprop='name') Хід будівництва
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href= location + "#documentation", itemprop='url') 
+            span(itemprop='name') Документація
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href='contacts.html', itemprop='url') 
+            span(itemprop='name') Контакти

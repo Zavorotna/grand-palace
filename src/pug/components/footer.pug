@@ -1,8 +1,8 @@
-footer.footer
+footer.footer(itemprop='publisher', itemscope, itemtype='http://schema.org/WPFooter')
   .container
     .footer-info.info-items
-      .footer-media.info-item
-        p.footer__email
+      .footer-media.info-item(itemprop='publisher', itemscope, itemtype='http://schema.org/Organization')
+        p.footer__email(itemprop='email')
           a.email-link(href='mailto:office@grandpalace.km.ua')
             +svg('email', 31, 23)
             |office@grandpalace.km.ua
@@ -10,18 +10,18 @@ footer.footer
           a.social-link(href='https://www.facebook.com/GrandPalace.km')
             +svg('fb', 31, 31)
           a.social-link(href='https://www.instagram.com/grand_palace_km/')
-            object(class='icon' type='image/svg+xml' data='img/instagram.svg' width='31' height='31')
-      .footer-address.info-item
+            object(class='icon' type='image/svg+xml' data='../img/instagram.svg' width='31' height='31')
+      .footer-address.info-item( itemscope itemtype='http://schema.org/PostalAddress')
         .footer-address__wrap
           +svg('pin-footer', 30, 40)
           p Відділення продажу
           p м. Хмельницький, вул. Подільська, 115
-      .footer__phone.phone-list.info-item
-        a.phone-link(href='tel:+380980555500')
+      .footer__phone.phone-list.info-item(itemscope itemtype='http://schema.org/ContactPoint')
+        a.phone-link(href='tel:+380670098700' itemprop='telephone')
           +svg('phone', 19, 29)
-          |(098)&nbsp;05-55-500
-        a.phone-link(href='tel:+380980555500')
+          |(067)&nbsp;00-98-700
+        a.phone-link(href='tel:+380670098700' itemprop='telephone')
           +svg('phone', 19, 29)
-          |(098)&nbsp;05-55-500
+          |(067)&nbsp;00-98-700
     .copyright
       p &copy; Copyright by &laquo;Grand Palace&raquo; 2012—2021
