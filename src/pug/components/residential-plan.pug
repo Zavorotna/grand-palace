@@ -1,10 +1,10 @@
-section.residential-plan
+section.residential-plan(itemscope itemtype="http://schema.org/ApartmentComplex")
   .container
     .title-wrap
       h2.residential-plan__title.title
         span.head-line План квартири
-    .plan-residential
-      p.short-description Перегляньте повне планування житлового комплексу та підберіть для себе квартиру залежно від поверху, кімнатності, квадратури та ціни.
+    .plan-residential(itemscope itemtype="http://schema.org/Residence")
+      p.short-description(itemprop="description") Перегляньте повне планування житлового комплексу та підберіть для себе квартиру залежно від поверху, кімнатності, квадратури та ціни.
       .plan-nav
         .plan-nav__header
           form.filter(action="" method="post")
@@ -12,13 +12,13 @@ section.residential-plan
               .filter__queue.filter__item
                 p.filter__title Очередь
                 .filter-queue__items
-                  input(id="queue1" type="radio" name="queue" value="1" data-exploitation = true)
+                  input(id="queue1" type="radio" name="queue" value="1" data-exploitation=true)
                   label.filter-queue__item(for="queue1") 1
-                  input(id="queue2" type="radio" name="queue" value="2" checked data-exploitation = false)
+                  input(id="queue2" type="radio" name="queue" value="2" checked data-exploitation=false)
                   label.filter-queue__item(for="queue2") 2
-                  input(id="queue3" type="radio" name="queue" value="3" data-exploitation = false)
+                  input(id="queue3" type="radio" name="queue" value="3" data-exploitation=false)
                   label.filter-queue__item(for="queue3") 3
-                  p.exploitation введено в эксплуатацию
+                  p.exploitation введено в експлуатацію
               .filter__floor.filter__item
                 p.filter__title Этаж
                 details.custom-select
@@ -37,7 +37,7 @@ section.residential-plan
         .plan-nav__img
           .img
             .js-slider
-            img(src="img/residential-plan.jpg" alt="Grand Palace - план житлового поверху")
+            img(src="img/residential-plan.jpg" alt="Grand Palace - план житлового поверху" title="План квартир Grand Palace")
           .btn.btn-arrow.btn-arrow-prev
             span I очередь
               +svg('arrow')

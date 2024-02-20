@@ -1,13 +1,13 @@
-section.real-estate.residential-overview
-  .container
-    article.real-estate__residential
+section.real-estate.residential-overview(itemscope, itemtype='http://schema.org/Residence')
+  .container(itemscope, itemtype='http://schema.org/Offer')
+    article.real-estate__residential(itemscope, itemtype='http://schema.org/Place')
       .row
         .image-wrapper
           .residential-overview__img
-            img(src="../img/residential-overview.jpg", alt="Grand Palace - комфортный жилой комплекс")
-        .short-description.col
-          h2.short-description__title.title
+            img(src='../img/residential-overview.jpg', alt='Grand Palace - комфортный жилой комплекс', itemprop='image' title="Современный комфортный жилой комплекс Grand Palace")
+        .short-description.col(itemprop='description')
+          h2.short-description__title.title(itemprop='name')
             span.head-line Современный комфортный жилой комплекс
-          p.short-description__text Это место, где вы сможете жить, работать, отдыхать, заниматься спортом и ходить на шопинг, не покидая своего жилища.
-          p.short-description__text Закрытый внутренний двор с распланированными зонами отдыха и детскими площадками придутся по вкусу всем, кто ценит уют, который так необходим в большом городе.
-          p.short-description__text Для вашего удобства мы строим подземный паркинг.
+          p.short-description__text(itemprop='description') Это место, где вы сможете жить, работать, отдыхать, заниматься спортом и ходить по магазинам, не покидая своего жилья.
+          p.short-description__text(itemprop='description') Закрытый внутренний двор с организованными зонами отдыха и детскими площадками придется по вкусу всем, кто ценит уют, который так необходим в большом городе.
+          p.short-description__text(itemprop='description') Для вашего удобства мы строим подземный паркинг.

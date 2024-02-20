@@ -1,26 +1,26 @@
-section.residential-plan
+section.residential-plan(itemscope itemtype="http://schema.org/ApartmentComplex")
   .container
     .title-wrap
       h2.residential-plan__title.title
-        span.head-line План квартири
-    .plan-residential
-      p.short-description Перегляньте повне планування житлового комплексу та підберіть для себе квартиру залежно від поверху, кімнатності, квадратури та ціни.
+        span.head-line План квартиры
+    .plan-residential(itemscope itemtype="http://schema.org/Residence")
+      p.short-description(itemprop="description") Посмотрите полное планирование жилого комплекса и выберите для себя квартиру в зависимости от этажа, количества комнат, площади и цены.
       .plan-nav
         .plan-nav__header
           form.filter(action="" method="post")
             .filter__items
               .filter__queue.filter__item
-                p.filter__title Черга
+                p.filter__title Очередь
                 .filter-queue__items
-                  input(id="queue1" type="radio" name="queue" value="1" data-exploitation = true)
+                  input(id="queue1" type="radio" name="queue" value="1" data-exploitation=true)
                   label.filter-queue__item(for="queue1") 1
-                  input(id="queue2" type="radio" name="queue" value="2" checked data-exploitation = false)
+                  input(id="queue2" type="radio" name="queue" value="2" checked data-exploitation=false)
                   label.filter-queue__item(for="queue2") 2
-                  input(id="queue3" type="radio" name="queue" value="3" data-exploitation = false)
+                  input(id="queue3" type="radio" name="queue" value="3" data-exploitation=false)
                   label.filter-queue__item(for="queue3") 3
-                  p.exploitation введено в експлуатацію
+                  p.exploitation введено в эксплуатацию
               .filter__floor.filter__item
-                p.filter__title Поверх
+                p.filter__title Этаж
                 details.custom-select
                   summary.radio-items
                     - var n = 2
@@ -33,21 +33,22 @@ section.residential-plan
                       li.list-item
                         label(for="floor"+k)= k++
         .plan-nav__title
-          h3 II черга
+          h3 II очередь
         .plan-nav__img
           .img
-            img(src="img/residential-plan.jpg" alt="Grand Palace - план житлового поверху")
+            .js-slider
+            img(src="../img/residential-plan.jpg" alt="Grand Palace - план жилого этажа" title="План квартир Grand Palace")
           .btn.btn-arrow.btn-arrow-prev
-            span I черга
+            span I очередь
               +svg('arrow')
           .btn.btn-arrow.btn-arrow-next
-            span III черга
+            span III очередь
               +svg('arrow')
         .plan-nav__info
           .info-wrap
             p.info-sold
               span.info-sold__title Продано -&nbsp;
-              span.info-sold__list 1a, 1e
+              span.info-sold__list 1а, 1е
             p.info-for-sale
-              span.info-for-sale__title Доступно для продажу -&nbsp;
-              span.info-for-sale__list 1c, 1d, 1b
+              span.info-for-sale__title Доступно для&nbsp;продажи&nbsp;-&nbsp;
+              span.info-for-sale__list 1с, 1д, 1б
