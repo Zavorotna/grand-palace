@@ -125,11 +125,10 @@ figure
       &::after
         width: 50%
 
-
-.header__logo 
-  width: 250px    
+.header__logo
+  width: 250px
   position: fixed
-  left: 50%    
+  left: 50%
   top: 0
   transform: translateX(-50%)
   padding: 20px
@@ -137,7 +136,6 @@ figure
   border-radius: 0 0 20px 20px
   box-shadow: 0 0 10px linen
   background: #f3ece2 url(../img/header-bg.jpg) center/cover no-repeat
-
 
 .btn
   display: inline-block
@@ -158,7 +156,7 @@ figure
   +media(1024)
     top: -173.625px
 
-@import components/sprite
+  @import components/sprite
 @import components/custom-select
 @import components/header
 @import components/hero
@@ -181,7 +179,6 @@ figure
 //     .header__menu
 //       height: 50vh
 
-
 // сторінка всіх новин
 
 .text-news
@@ -191,7 +188,7 @@ figure
   font-weight: 400
   font: 400 $fTextFirst Roboto, Arial, sans-serif
 
-figure.news 
+figure.news
   max-width: 540px
   padding: 30px
   object-fit: cover
@@ -257,8 +254,18 @@ figure.news
   p
     margin: 0 !important
 
+.wrapper404
+  margin: 0 auto
+  max-width: 960px
+  padding: 220px 0
 
-.table-news 
+.h1
+  margin: 0 auto
+  font-size: 60px
+  font-weight: bold
+  text-align: center
+
+.table-news
   .tr-news:first-child
     margin-bottom: 20px
 
@@ -300,7 +307,7 @@ figure.news
   margin-bottom: 45px
   .tr-news .td
     padding-right: 20px
-  
+
 .news-location
   position: relative
   &::before
@@ -323,13 +330,10 @@ figure.news
   column-gap: 20px
   row-gap: 20px
 
-
-
 .gallery-sm-photoes
   padding-top: 20px
 
-
-.photo-slider 
+.photo-slider
   width: 100%
   +media(570)
     width: 48%
@@ -348,7 +352,6 @@ figure.news
   font-weight: 400
   font-family: "Roboto"
   opacity: 1
-
 
 .hero-news
   position: relative

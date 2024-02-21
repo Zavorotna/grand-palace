@@ -3,12 +3,11 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0")
-        title 404 - page not found
+        link(rel="stylesheet" href="css/styles.css")
+        title Grand Palace - 404 page not found
     body(tabindex="0")
-    .body-wrapper
-      include components/vars
-      include components/mixins
-      include components/header
-    main.main
-        h1 404 - Сторінка не знайдена
+        include components/mixins
+        include components/header
+        main.main.wrapper404
+            h1.h1 404 - Сторінка не знайдена 
     include components/footer
