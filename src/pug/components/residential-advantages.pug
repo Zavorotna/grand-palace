@@ -1,33 +1,33 @@
-section.residential-advantages
+section.residential-advantages(itemscope, itemtype='http://schema.org/RealEstateAgent')
   .title-wrap
     h2.residential-advantages__title.title
       span.head-line Переваги для
       |  життя
   .advantages
     .container
-      .advantages__items.row
-        .advantages__item.col-20.col-sm
+      .advantages__items.row(itemscope, itemtype='http://schema.org/ItemList')
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
           .advantages__img
-            +svg("infrastructure")
-          p.advantages__title
+            +svg("infrastructure", itemprop='image')
+          p.advantages__title(itemprop='name')
             | Власна<br>інфраструктура
-        .advantages__item.col-20.col-sm
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
           .advantages__img
-            +svg("rest-area")
-          p.advantages__title
+            +svg("rest-area", itemprop='image')
+          p.advantages__title(itemprop='name')
             | Зона відпочинку
-        .advantages__item.col-20.col-sm
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
           .advantages__img
-            +svg("playground")
-          p.advantages__title
+            +svg("playground", itemprop='image')
+          p.advantages__title(itemprop='name')
             | Дитячий майданчик
-        .advantages__item.col-20.col-sm
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
           .advantages__img
-            +svg("underground-parking")
-          p.advantages__title
+            +svg("underground-parking", itemprop='image')
+          p.advantages__title(itemprop='name')
             | Підземний паркінг
-        .advantages__item.col-20.col-sm
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
           .advantages__img
-            +svg("location-center")
-          p.advantages__title
+            +svg("location-center", itemprop='image')
+          p.advantages__title(itemprop='name')
             | Розташування<br>в центрі міста
