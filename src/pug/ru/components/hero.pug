@@ -1,3 +1,33 @@
+.popap-block
+  .opacity-bg
+  .popap-more-info 
+    .popap-header-line
+      h2.documentation__title.title.title--one-word
+        span.head-line дізнатися ціну
+    form() 
+      .popap-input_block.flex-popap
+        span.cancel-popap
+          <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+            <path class="a" d="m14.7 0.8l1 1-13.9 13.9-1-1z"/>
+            <path class="a" d="m0.8 1.8l1-1 13.9 13.9-1 1z"/>
+          </svg>
+        p.flex-popap.label-flex.input-popap
+          label(for="name") Імʼя*
+          input(type="text" id="name" name="name") 
+        p.flex-popap.label-flex.input-popap
+          label(for="tel") Номер телефону*
+          input(type="tel" id="tel" name="tel") 
+      .question.flex-popap.label-flex
+        label Запитання
+        textarea#question(name="question", cols="30", rows="10") 
+      .radio-btn
+        p
+          input(type="radio" id="liveHouse" name="popapRadio")
+          label(for="liveHouse") Житлова нерухомість
+        p
+          input(type="radio" id="comercial" name="popapRadio")
+          label(for="comercial") Комерційна нерухомість
+      button(type="submit") відправити 
 section.hero
   .container
     .row
@@ -5,4 +35,12 @@ section.hero
         p.tagline Твое яркое начало
         h1.hero__title
           span.text Современный комфортный жилой комплекс с широким спектром удобств гармонично совмещенный с ТРЦ.
-          span.text Использование крыши для прогулочных зон отдыха.
+          //- span.text Использование крыши для прогулочных зон отдыха.
+  .slider-images 
+    img(src="img/hero1_1.webp", alt="Комерційні приміщення для бізнесу у ТРЦ Grand Palace", loading="lazy")
+    img(src="img/hero.jpg", alt="Сучасний ТРЦ Grand Palce")
+    img(src="img/hero2_2.webp", alt="Зручний паркінг біля ТРЦ Grand Palace", loading="lazy")
+    img(src="img/hero3_3.webp", alt="Проекція нового ТРЦ Grand Palace", loading="lazy")
+    img(src="img/hero4_4.webp", alt="Житлові квартири в Grand Palace", loading="lazy")
+    img(src="img/hero5_5.webp", alt="Загальний план будівництва - вигляд ззовні", loading="lazy")
+    img(src="img/hero6_6.webp", alt="загальний вигляд Елітного ЖК Grand Palace", loading="lazy")
