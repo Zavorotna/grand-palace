@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function readMoreUpgrade() {
     const btnReadMore = document.querySelectorAll(".btn-more"),
       btnCancel = document.querySelectorAll(".btn-more-cancel"),
-      desriptMore = document.querySelectorAll(".text-comment-block")
+      desriptMore = document.querySelectorAll(".text-comment-block"),
+      commentBlock = document.querySelector(".comment-block")
 
     btnReadMore.forEach((item, index) => {
       item.addEventListener("click", function (e) {
@@ -33,15 +34,17 @@ document.addEventListener("DOMContentLoaded", function () {
         desriptMore[index].classList.add("visible")
         btnCancel[index].style.display = "block"
         item.style.display = "none"
+        commentBlock.style.paddingBottom = "100px"
       })
     })  
-
+    
     btnCancel.forEach((item, index) => {
       item.addEventListener("click", function (e) {
         e.preventDefault()
         desriptMore[index].classList.remove("visible")
         btnReadMore[index].style.display = "block"
         item.style.display = "none"
+        commentBlock.style.paddingBottom = ""
       })
     })
   }

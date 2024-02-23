@@ -1,3 +1,5 @@
 mixin svg(id, width, height)
   svg(class='icon-sprite icon-sprite__'+id width=width height=height)
+    include sprite.pug
+    use(href='#' + id)
     use(xlink:href='img/sprite.svg#' + id)
