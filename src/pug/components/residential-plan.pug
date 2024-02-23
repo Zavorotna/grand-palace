@@ -10,13 +10,13 @@ section.residential-plan(itemscope itemtype="http://schema.org/ApartmentComplex"
           form.filter(action="" method="post")
             .filter__items
               .filter__queue.filter__item
-                p.filter__title Очередь
+                p.filter__title Черга
                 .filter-queue__items
                   input(id="queue2" type="radio" name="queue" value="2" checked data-exploitation=false)
                   label.filter-queue__item(for="queue2") 2
                   p.exploitation введено в експлуатацію
               .filter__floor.filter__item
-                p.filter__title Этаж
+                p.filter__title Поверх
                 details.custom-select
                   summary.radio-items
                     - var n = 2
