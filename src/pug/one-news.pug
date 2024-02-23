@@ -27,6 +27,7 @@ html(lang="uk")
       include components/vars
       include components/mixins
       include components/header
+      include components/sprite
       main.main.container
         .news-card 
             .news-gallery 
@@ -54,11 +55,15 @@ html(lang="uk")
                 .table-news.table-td-styled
                     .tr-news
                         p.td Завітайте у відділ продажу 
-                        p.news-location м. Хмельницький вул. Свободи, 14
+                        p.news-location
+                            +svg('pin-footer', 100, 10)
+                            | м. Хмельницький вул. Свободи, 14
                     .tr-news
                         p.td Або телефонуйте
                         p 
-                            a(href="tel:+380980555500")  (098) 055 55 00
+                            a.phone-link(href='tel:+380980555500' itemprop='telephone')
+                                +svg('phone', 19, 29)
+                                |(098)&nbsp;055 55 00
                 a.short-description__btn.btn(href="news.html") усі новини
 
     script(src="js/scripts.js")
