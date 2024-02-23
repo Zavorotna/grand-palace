@@ -6,7 +6,8 @@ header.header(itemscope itemtype="http://schema.org/WPHeader")
           span
       .header-info__item.header__phone.phone-list(itemscope itemtype="http://schema.org/SiteNavigationElement")
         a.phone-link(href='tel:+380980555500', itemprop='url', content="+380980555500")
-          +svg('phone') (098)&nbsp;05-55-500
+          +svg('phone') 
+          |(098)&nbsp;05-55-500
       .header-info__item.header__logo(itemscope itemtype="http://schema.org/Organization")
         a.menu__logo(href='./', itemprop='url')
           img(src='../img/logo-grand-palace.svg' alt='Grand Palace - житловий комплекс', itemprop='logo', title="Grand Palace - житловий комплекс")
@@ -14,7 +15,7 @@ header.header(itemscope itemtype="http://schema.org/WPHeader")
         a.social-link(href='https://www.facebook.com/GrandPalace.km' target="_blank", itemprop='sameAs')
           +svg('fb', 31, 31)
         a.social-link(href='https://www.instagram.com/grand_palace_km/' target="_blank", itemprop='sameAs')
-          object(class='icon' type='image/svg+xml' data='img/instagram.svg' width='31' height='31')
+          object(class='icon' type='image/svg+xml' data='/img/instagram.svg' width='31' height='31')
       .header-info__item.header__lng-toggle(itemscope itemtype="http://schema.org/SiteNavigationElement")
         a.active(href='#' data-lang="uk", itemprop='url') Укр
         a(href='#' data-lang="ru", itemprop='url') Рус
@@ -41,3 +42,6 @@ header.header(itemscope itemtype="http://schema.org/WPHeader")
         li(itemscope itemtype="http://schema.org/SiteNavigationElement")
           a.menu__link(href='contacts.html', itemprop='url') 
             span(itemprop='name') Контакты
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href='news.html', itemprop='url') 
+            span(itemprop='name') Новости
