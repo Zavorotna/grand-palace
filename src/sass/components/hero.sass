@@ -98,7 +98,8 @@
   display: none
   +media(1024)
     padding: 50px 40px
-
+.center-row-hero
+  align-items: center
 .cancel-popap
   position: absolute
   top: 20px
@@ -178,8 +179,8 @@
     position: relative
     flex: 1 0 50%
     max-width: 100%
-    padding-top: 65px
-    padding-bottom: 55px
+    padding-top: 25vh
+    padding-bottom: 25vh
     color: $fontColorSecond
     text-align: center
     +media(640)
@@ -188,12 +189,12 @@
     +media(1024)
       flex: 0 0 50%
       max-width: 50%
-    +media(1420)
-      padding-top: 110px
-      padding-bottom: 180px
-    +media(1860)
-      padding-top: 150px
-      padding-bottom: 215px
+    // +media(1420)
+    //   padding-top: 110px
+    //   padding-bottom: 180px
+    // +media(1860)
+    //   padding-top: 150px
+    //   padding-bottom: 215px
 
   .tagline
     position: relative
@@ -204,21 +205,27 @@
     +media(425)
       font-size: 3rem
     +media(768)
-      font-size: 3.6rem
+      font-size: 4.6rem
     +media(1420)
-      font-size: 4.4rem
+      font-size: 5.4rem
     +media(1630)
       font-size: $fTitleMain
   .hero__title
     font: 500 1.6rem 'Roboto', Arial, sans-serif
     line-height: 1.5
     +media(1024)
-      font-size: $fTextSecond
+      font-size: 25px
+      // font-size: $fTextSecond
     .text
       position: relative
       display: block
       padding-bottom: 46px
       z-index: 2
+      +media(768)
+        width: 39vw
+      +media(1440)
+        width: 35vw
+
 
 .open-popap
   position: relative
