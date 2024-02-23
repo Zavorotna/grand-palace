@@ -1,20 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.querySelector(".news-gallery ")) {
-    let productImages = document.querySelectorAll('.gallery-sm-photoes img'),
-      generalImg = document.querySelector('.general-img')
 
-    productImages.forEach(function (image) {
-      image.addEventListener('click', function () {
-        let clickedImageUrl = this.src,
-          generalSrc = generalImg.src
-
-
-        generalImg.src = clickedImageUrl
-
-        this.src = generalSrc
-      });
-    });
-  }
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
     header = document.querySelector(".header"),
     headerHeight = header.getBoundingClientRect().height

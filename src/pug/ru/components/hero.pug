@@ -15,8 +15,10 @@
           label(for="name") Імʼя*
           input(type="text" id="name" name="name") 
         p.flex-popap.label-flex.input-popap
-          label(for="tel") Номер телефону*
-          input(type="tel" id="tel" name="tel") 
+          label.validation(for="phoneValidation") Номер телефону*
+          input.phone-validation#phoneValidation(type="tel" name="phone")
+          .incorect-number-test.d-none 
+            p *невірний формат вводу даних
       .question.flex-popap.label-flex
         label Запитання
         textarea#question(name="question", cols="30", rows="10") 

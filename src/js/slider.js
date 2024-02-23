@@ -1,5 +1,45 @@
 // residential/commercial (rc) slider
 document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".popap-block")) {
+    function isValidPhoneNumber(phoneNumber) {
+      // Регулярний вираз для перевірки формату номеру телефону +380xxxxxxxxx
+      const phoneRegex = /\+380[0-9]{9}$/;
+      return phoneRegex.test(phoneNumber);
+    }
+
+    let userPhoneInput = document.querySelector("#phoneValidation") //інпут для введення номеру телефону
+
+    userPhoneInput.addEventListener("change", function () {
+      let validateNum = isValidPhoneNumber(userPhoneInput.value)
+      console.log(validateNum);
+      if (validateNum) {
+        if (document.querySelector(".incorrect-number")) {
+          userPhoneInput.classList.remove("incorrect-number")
+          document.querySelector(".incorect-number-test").classList.add("d-none")
+          userPhoneInput.classList.add("correct-number")
+        } else {
+          if (!document.querySelector(".correct-number")) {
+            userPhoneInput.classList.add("correct-number")
+          }
+
+        }
+      } else {
+        document.querySelector(".incorect-number-test").classList.remove("d-none")
+        if (document.querySelector(".correct-number")) {
+          userPhoneInput.classList.remove("correct-number")
+          document.querySelector(".incorect-number-test").classList.remove("d-none")
+          userPhoneInput.classList.add("incorrect-number")
+        } else {
+          if (!document.querySelector(".incorrect-number")) {
+            userPhoneInput.classList.add("incorrect-number")
+          }
+
+
+        }
+      }
+
+    })
+  }
   //slider main img
   if (document.querySelectorAll('.slider-images img')) {
     const images = document.querySelectorAll('.slider-images img')
@@ -34,10 +74,17 @@ document.addEventListener("DOMContentLoaded", function () {
         desriptMore[index].classList.add("visible")
         btnCancel[index].style.display = "block"
         item.style.display = "none"
-        commentBlock.style.paddingBottom = "100px"
+        const screenWidth = window.innerWidth
+        if (screenWidth >= 768) {
+          commentBlock.style.paddingBottom = "15%"
+        } else if(screenWidth >= 375 && screenWidth < 425){
+          commentBlock.style.paddingBottom = "70%"
+        } else if(screenWidth >= 425 && screenWidth < 768){
+          commentBlock.style.paddingBottom = "50%"
+        }
       })
-    })  
-    
+    })
+
     btnCancel.forEach((item, index) => {
       item.addEventListener("click", function (e) {
         e.preventDefault()
@@ -58,8 +105,18 @@ document.addEventListener("DOMContentLoaded", function () {
       nextButton = document.querySelector('.right')
 
     let items = [...document.querySelectorAll(".carousel-item")]
+    const screenWidth = window.innerWidth
 
-    const itemWidth = items[0].offsetWidth + 60
+    let itemWidth
+
+    if (screenWidth >= 1024) {
+      const percent = 48
+
+      itemWidth = screenWidth * (percent / 100)
+
+    } else {
+      itemWidth = items[0].offsetWidth + 75
+    }
 
     let currentIndex = 0,
       isAnimating = false
@@ -137,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   //popup
-  if(document.querySelector(".popap-block")) {
+  if (document.querySelector(".popap-block")) {
     const bgDark = document.querySelector(".opacity-bg"),
       popupForm = document.querySelector(".popap-more-info"),
       cancelPopap = document.querySelector(".cancel-popap"),
@@ -145,17 +202,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     bgDark.addEventListener("click", function (e) {
       e.preventDefault()
-      cancelPopapBg ()
+      cancelPopapBg()
     })
-    cancelPopap.addEventListener("click", function (e){
+    cancelPopap.addEventListener("click", function (e) {
       e.preventDefault()
-      cancelPopapBg ()
+      cancelPopapBg()
     })
     openPopap.addEventListener("click", function (e) {
       e.preventDefault()
       popupForm.style.display = "block"
       bgDark.style.display = "block"
     })
+
     function cancelPopapBg() {
       bgDark.style.display = "none"
       popupForm.style.display = "none"
