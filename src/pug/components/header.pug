@@ -5,9 +5,17 @@ header.header(itemscope itemtype="http://schema.org/WPHeader")
         .icon__menu
           span
       .header-info__item.header__phone.phone-list(itemscope itemtype="http://schema.org/SiteNavigationElement")
-        a.phone-link(href='tel:+380980555500', itemprop='url', content="+380980555500")
-          +svg('phone') 
-          |(098)&nbsp;05-55-500
+        .flex-icons
+          a.phone-link(href='tel:+380980555500', itemprop='url', content="+380980555500")
+            +svg('phone') 
+            |(098)&nbsp;05-55-500
+          span.social-icons.flex-icons
+            a.wsup(href="#")
+              +svg('wsup', 29, 29) 
+            a.telegram(href="#")
+              +svg('telegram', 34, 29) 
+            a.viber(href="#")
+              +svg('viber', 27, 29) 
       .header-info__item.header__logo(itemscope itemtype="http://schema.org/Organization")
         a.menu__logo(href='./', itemprop='url')
           img(src='img/logo-grand-palace.svg' alt='Grand Palace - житловий комплекс', itemprop='logo', title="Grand Palace - житловий комплекс")

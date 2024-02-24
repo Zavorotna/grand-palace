@@ -20,8 +20,15 @@ footer.footer(itemprop='publisher', itemscope, itemtype='http://schema.org/WPFoo
         a.phone-link(href='tel:+380980555500' itemprop='telephone')
           +svg('phone', 19, 29)
           |(098)&nbsp;055 55 00
-        a.phone-link(href='tel:+380980555500' itemprop='telephone')
-          +svg('phone', 19, 29)
-          |(098)&nbsp;055 55 00
+        //- a.phone-link(href='tel:+380980555500' itemprop='telephone')
+        //-   +svg('phone', 19, 29)
+        //-   |(098)&nbsp;055 55 00
+        span.social-icons.flex-icons
+          a.wsup(href="#")
+            +svg('wsup', 29, 29) 
+          a.telegram(href="#")
+            +svg('telegram', 34, 29) 
+          a.viber(href="#")
+            +svg('viber', 27, 29) 
     .copyright
       p &copy; Copyright by &laquo;Grand Palace&raquo; 2012—2021
