@@ -3,7 +3,7 @@
   .popap-more-info 
     .popap-header-line
       h2.documentation__title.title.title--one-word
-        span.head-line дізнатися ціну
+        span.head-line Узнать цену
     form() 
       .popap-input_block.flex-popap
         span.cancel-popap
@@ -15,30 +15,30 @@
           label(for="name") Імʼя*
           input(type="text" id="name" name="name") 
         p.flex-popap.label-flex.input-popap
-          label.validation(for="phoneValidation") Номер телефону*
+          label.validation(for="phoneValidation") Номер телефона*
           input.phone-validation#phoneValidation(type="tel" name="phone")
           .incorect-number-test.d-none 
-            p *невірний формат вводу даних
+            p *неверный формат ввода данных
       .question.flex-popap.label-flex
-        label Запитання
+        label Вопрос
         textarea#question(name="question", cols="30", rows="10") 
       .radio-btn
         p
           input(type="radio" id="liveHouse" name="popapRadio")
-          label(for="liveHouse") Житлова нерухомість
+          label(for="liveHouse") Жилая недвижимость
         p
           input(type="radio" id="comercial" name="popapRadio")
-          label(for="comercial") Комерційна нерухомість
-      button(type="submit") відправити 
+          label(for="comercial") Коммерческая недвижимость
+      button(type="submit") отправить
 section.hero
   .container
     .row
       .left-side.col
-        p.tagline Твое яркое начало
+        p.tagline Grand Palace
         h1.hero__title
-          span.text Современный комфортный жилой комплекс с широким спектром удобств гармонично совмещенный с ТРЦ.
-        a.open-popap.short-description__btn.btn(href="#") Отримати більше інформації
-          //- span.text Использование крыши для прогулочных зон отдыха.
+          span.text пространство для жизни с высоким стандартом в центре города
+          //- span.text Використання даху для прогулянкових зон відпочинку.
+        a.open-popap.short-description__btn.btn(href="#") Узнать цену
   .slider-images 
     img(src="../img/hero1_1.webp", alt="Комерційні приміщення для бізнесу у ТРЦ Grand Palace", loading="lazy")
     img(src="../img/hero.jpg", alt="Сучасний ТРЦ Grand Palce")
