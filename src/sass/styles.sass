@@ -457,7 +457,7 @@ figure.news
     right: auto
     top: 0
 
-.phone-list .phone-link
+header .phone-list .phone-link
   font-size: 1.4rem
   position: absolute
   top: 30px
@@ -479,7 +479,7 @@ figure.news
     +media(1085)
       display: block
 
-.social-icons 
+header .social-icons 
   position: absolute
   top: 18px
   left: 45px 
@@ -502,3 +502,13 @@ figure.news
   padding-top: 70px
   +media(390)
       padding-top: 0
+
+.footer__phone .phone-link
+  padding: 0
+  +media(370)
+    padding: 5px 10px 4px 40px
+
+.phone-list
+  justify-content: center
+  +media(370)
+    justify-content: flex-start
