@@ -457,11 +457,11 @@ figure.news
     right: auto
     top: 0
 
-.phone-list .phone-link 
+.phone-list .phone-link
   font-size: 1.4rem
   position: absolute
-  top: 25px
-  left: 25px
+  top: 30px
+  left: 25px 
   +media(768)
     position: relative
     top: auto
@@ -472,3 +472,27 @@ figure.news
 .plan-nav__img
   .btn-arrow
     display: none
+
+.phone-link
+  strong
+    display: none
+    +media(1085)
+      display: block
+
+.social-icons 
+  position: absolute
+  top: 18px
+  left: 45px 
+  svg
+    +media(768)
+      width: 25px
+      height: 25px
+      margin-left: -5px
+    +media(820)
+      width: auto
+      height: auto
+      margin-left: 0
+  +media(768)
+    position: relative
+    top: auto
+    left: auto
