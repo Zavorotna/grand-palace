@@ -78,9 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (screenWidth >= 768) {
           commentBlock.style.paddingBottom = "15%"
         } else if(screenWidth >= 375 && screenWidth < 425){
-          commentBlock.style.paddingBottom = "70%"
+          commentBlock.style.paddingBottom = "75%"
         } else if(screenWidth >= 425 && screenWidth < 768){
           commentBlock.style.paddingBottom = "50%"
+        } else if (screenWidth < 375) {
+          commentBlock.style.paddingBottom = "100%"
         }
       })
     })
