@@ -90,7 +90,7 @@
 .popap-more-info
   position: fixed
   width: 90%
-  height: 95vh
+  height: 90%
   top: 50%
   left: 50%
   padding: 30px 20px
@@ -102,8 +102,14 @@
     width: 55vw
     height: 43vw
     padding: 50px 40px
-  +media(1440)
-    width: 50vw
+
+.scroll-style
+  &::-webkit-scrollbar
+    width: 5px
+    height: 8px
+    background: transparent
+  &::-webkit-scrollbar-thumb 
+    background-color:  rgba(#f3ece2, 0.8)
 
 .center-row-hero
   align-items: center

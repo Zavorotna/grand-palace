@@ -59,6 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startSlider()
   }
+  if (document.querySelector(".popap-more-info")) {
+    const popapMain = document.querySelector(".popap-more-info")
+    popapHeight = window.innerHeight
+    console.log(popapHeight);
+    if (popapHeight < 500) {
+      popapMain.style.overflowY = "scroll"
+      popapMain.classList.add("scroll-style")
+    } else {
+      popapMain.style.overflowY = ""
+      popapMain.classList.remove("scroll-style")
+    }
+  }
 
   // попап з текстом
   function readMoreUpgrade() {
@@ -77,9 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const screenWidth = window.innerWidth
         if (screenWidth >= 768) {
           commentBlock.style.paddingBottom = "15%"
-        } else if(screenWidth >= 375 && screenWidth < 425){
+        } else if (screenWidth >= 375 && screenWidth < 425) {
           commentBlock.style.paddingBottom = "75%"
-        } else if(screenWidth >= 425 && screenWidth < 768){
+        } else if (screenWidth >= 425 && screenWidth < 768) {
           commentBlock.style.paddingBottom = "50%"
         } else if (screenWidth < 375) {
           commentBlock.style.paddingBottom = "100%"
