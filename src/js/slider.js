@@ -109,102 +109,87 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     })
   }
-
   //слайдер на відгуки
-
-  if (document.querySelector('.carousel')) {
-
-    const carousel = document.querySelector('.carousel'),
-      prevButton = document.querySelector('.left'),
-      nextButton = document.querySelector('.right')
-
-    let items = [...document.querySelectorAll(".carousel-item")]
-    const screenWidth = window.innerWidth
-
-    let itemWidth
-
-    if (screenWidth >= 1024) {
-      const percent = 48
-
-      itemWidth = screenWidth * (percent / 100)
-
-    } else {
-      itemWidth = items[0].offsetWidth + 75
-    }
-
-    let currentIndex = 0,
-      isAnimating = false
-
-    function updateCarousel() {
-      while (carousel.firstChild) {
-        carousel.removeChild(carousel.firstChild)
+  window.addEventListener("resize", function () {
+    setTimeout(() => {
+      slaiderComment()
+    }, 100)
+  })
+  slaiderComment()
+  function slaiderComment() {
+    if (document.querySelector('.carousel')) {
+  
+      const carousel = document.querySelector('.carousel'),
+        prevButton = document.querySelector('.left'),
+        nextButton = document.querySelector('.right')
+  
+      let items = [...document.querySelectorAll(".carousel-item")]
+      const screenWidth = window.innerWidth
+  
+      let itemWidth
+  
+      if (screenWidth >= 1024) {
+        const percent = 48
+  
+        itemWidth = screenWidth * (percent / 100)
+  
+      } else {
+        itemWidth = items[0].offsetWidth + 75
       }
-
-      const firstClone = items[items.length - 1].cloneNode(true)
-      firstClone.style.left = `-${itemWidth}px`
-      carousel.insertAdjacentElement("afterbegin", firstClone)
-
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i].cloneNode(true)
-        item.style.left = i * itemWidth + "px"
-        carousel.appendChild(item)
-      }
-      readMoreUpgrade()
-    }
-
-    updateCarousel()
-
-    function goToIndex(index) {
-      isAnimating = true
-
-      const distance = -index * itemWidth
-
-      currentIndex = (currentIndex + items.length + index) % items.length
-
-      carousel.style.transition = 'transform .5s ease-in-out'
-      carousel.style.transform = `translateX(${distance}px)`
-
-      setTimeout(() => {
-        carousel.style.transition = 'none'
-        carousel.style.transform = 'none'
+  
+      let currentIndex = 0,
         isAnimating = false
-        updateCarousel()
-      }, 500)
+  
+      function updateCarousel() {
+        while (carousel.firstChild) {
+          carousel.removeChild(carousel.firstChild)
+        }
+  
+        const firstClone = items[items.length - 1].cloneNode(true)
+        firstClone.style.left = `-${itemWidth}px`
+        carousel.insertAdjacentElement("afterbegin", firstClone)
+  
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i].cloneNode(true)
+          item.style.left = i * itemWidth + "px"
+          carousel.appendChild(item)
+        }
+        readMoreUpgrade()
+      }
+  
+      updateCarousel()
+  
+      function goToIndex(index) {
+        isAnimating = true
+  
+        const distance = -index * itemWidth
+  
+        currentIndex = (currentIndex + items.length + index) % items.length
+  
+        carousel.style.transition = 'transform .5s ease-in-out'
+        carousel.style.transform = `translateX(${distance}px)`
+  
+        setTimeout(() => {
+          carousel.style.transition = 'none'
+          carousel.style.transform = 'none'
+          isAnimating = false
+          updateCarousel()
+        }, 500)
+      }
+  
+      nextButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        items.push(items.shift())
+        goToIndex(1)
+      })
+  
+      prevButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        items.unshift(items.pop())
+        goToIndex(-1)
+      })
     }
 
-    nextButton.addEventListener('click', (e) => {
-      e.preventDefault()
-      items.push(items.shift())
-      goToIndex(1)
-    })
-
-    prevButton.addEventListener('click', (e) => {
-      e.preventDefault()
-      items.unshift(items.pop())
-      goToIndex(-1)
-    })
-
-    // let touchStartX = 0,
-    //   touchEndX = 0
-
-    // carousel.addEventListener('touchstart', (e) => {
-    //   touchStartX = e.touches[0].clientX
-    // })
-
-    // carousel.addEventListener('touchmove', (e) => {
-    //   touchEndX = e.touches[0].clientX
-    // })
-
-    // carousel.addEventListener('touchend', () => {
-    //   const touchDiff = touchStartX - touchEndX
-    //   if (touchDiff > 50) {
-    //     items.push(items.shift())
-    //     goToIndex(1)
-    //   } else if (touchDiff < -50) {
-    //     items.unshift(items.pop())
-    //     goToIndex(-1)
-    //   }
-    // })
   }
 
   //popup
