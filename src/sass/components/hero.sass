@@ -55,16 +55,16 @@
   align-items: center
 
 .popap-block-input
-  display: grid
-  grid-template-columns: 1fr 1fr
-  grid-template-rows: 1fr
-  column-gap: 20px
+  +media(768)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr
+    column-gap: 20px
 
 .input-popap
   width: 100%
   max-height: 40px
   margin-bottom: 30px
-    margin-bottom: 20px
 
 .popap-more-info
   display: none
@@ -78,8 +78,8 @@
   background-color: #f3ece2
   z-index: 12
   +media(1024)
-    width: 55vw
-    height: 95vh
+    width: 600px
+    height: 565px
     padding: 50px 40px
   // label
   //   margin-bottom: 10px
