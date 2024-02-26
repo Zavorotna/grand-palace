@@ -20,6 +20,11 @@
     font-weight: 400
     font-family: "Roboto"
     resize: none
+    min-height: 80px
+    max-height: 100px
+    +media(1024)
+      min-height: 120px
+      max-height: 150px
   button
     position: relative
     top: 0
@@ -32,8 +37,6 @@
     transform: translateX(-50%)
     border: none
     cursor: pointer
-    +media(1024)
-      padding: 15px 50px
 
 .opacity-bg
   display: none
@@ -50,66 +53,44 @@
   display: flex
   justify-content: center
   align-items: center
-  +media(1024)
-    margin-bottom: 15px
 
-.popap-input_block
-  flex-wrap: wrap
-  +media(768)
-    flex-wrap: nowrap
-
-.flex-popap
-  display: flex
-  justify-content: space-between
-  // column-gap: 20px
-.input-popap_name
-  +media(768)
-    margin-right: 20px
-.label-flex
-  flex-direction: column
+.popap-block-input
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr
+  column-gap: 20px
 
 .input-popap
   width: 100%
-  margin-bottom: 10px
-  +media(1440)
-    width: 300px
+  max-height: 40px
+  margin-bottom: 30px
     margin-bottom: 20px
 
-.question
-  min-height: 80px
-  max-height: 100px
-  +media(1024)
-    min-height: 120px
-    max-height: 150px
-
-.question,
-.input-popap
-  label
-    padding-bottom: 5px
-
 .popap-more-info
+  display: none
   position: fixed
   width: 90%
-  height: 90%
+  height: 90vh
   top: 50%
   left: 50%
   padding: 30px 20px
   transform: translate(-50%, -50%)
   background-color: #f3ece2
   z-index: 12
-  display: none
   +media(1024)
     width: 55vw
-    height: 43vw
+    height: 95vh
     padding: 50px 40px
+  // label
+  //   margin-bottom: 10px
 
 .scroll-style
   &::-webkit-scrollbar
     width: 5px
     height: 8px
     background: transparent
-  &::-webkit-scrollbar-thumb 
-    background-color:  rgba(#f3ece2, 0.8)
+  &::-webkit-scrollbar-thumb
+    background-color: rgba(#f3ece2, 0.8)
 
 .center-row-hero
   align-items: center
@@ -241,7 +222,6 @@
         width: 39vw
       +media(1440)
         width: 35vw
-
 
 .open-popap
   position: relative

@@ -5,23 +5,30 @@
       h2.documentation__title.title.title--one-word
         span.head-line Узнать цену
     form() 
-      .popap-input_block.flex-popap
+      .popap-input_block
         span.cancel-popap
           <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
             <path fill="#9c1a1a" d="m14.7 0.8l1 1-13.9 13.9-1-1z"/>
             <path fill="#9c1a1a" d="m0.8 1.8l1-1 13.9 13.9-1 1z"/>
           </svg>
-        p.flex-popap.label-flex.input-popap.input-popap_name
-          label(for="name") Имя*
-          input(type="text" id="name" name="name") 
-        p.flex-popap.label-flex.input-popap
-          label.validation(for="phoneValidation") Номер телефона*
-          input.phone-validation#phoneValidation(type="tel" name="phone")
-          .incorect-number-test.d-none 
-            p *неверный формат ввода данных
-      .question.flex-popap.label-flex
-        label Вопрос
-        textarea#question(name="question", cols="30", rows="10") 
+        .popap-block-input
+          .input-popap.input-popap_name
+            p
+              label(for="name") Имя*
+            p
+              input(type="text" id="name" name="name") 
+          .input-popap
+            p
+              label.validation(for="phoneValidation") Номер телефона*
+            p
+              input.phone-validation#phoneValidation(type="tel" name="phone")
+            .incorect-number-test.d-none 
+              p *неверный формат ввода данных
+      .question
+        p
+          label(for="question")  Вопрос
+        p
+          textarea#question(name="question", cols="30", rows="10") 
       .radio-btn
         p
           input(type="radio" id="liveHouse" name="popapRadio")
