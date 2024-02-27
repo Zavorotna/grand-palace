@@ -356,6 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //     }
   //   }
 
+<<<<<<< HEAD
   // }
   // currFloor()
   // //slider
@@ -375,6 +376,27 @@ document.addEventListener("DOMContentLoaded", function () {
   //   navigationButtons[i].dataset.orderNumber = i;
   //   rc_slides[i].dataset.orderNumber = i;
   // }
+=======
+    // }
+    // currFloor()
+    // //slider
+    // currentFloor = currFloor()
+    // console.log(currentFloor);
+    // let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
+    //   rc_btn_next = document.querySelector(".btn-arrow-next"),
+    //   rc_slider_line = document.querySelector(".js-slider"),
+    //   rc_slides = document.querySelectorAll(".slide"),
+    //   scrollWidth = rc_slides[1].getBoundingClientRect().width,
+    //   navigationButtons = document.querySelectorAll(".filter-queue__items input"),
+    //   currentSlideBtn = document.querySelector(".currentSlideBtn"),
+    //   currentSlide;
+    // // console.log(navigationButtons);
+    // for (let i = 0; i < rc_slides.length; i++) { // set data attribute with order numbers of each picture
+    //   // console.log(navigationButtons[i].dataset.orderNumber);
+    //   navigationButtons[i].dataset.orderNumber = i;
+    //   rc_slides[i].dataset.orderNumber = i;
+    // }
+>>>>>>> b3729f43d71326e50e9f46a1716aaaceee898def
 
   // rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth * currentSlideBtn.getAttribute("data-order-number"), 0); // set start position for slider
   // rc_slides[currentSlideBtn.getAttribute("data-order-number")].classList.add("currentSlide");
@@ -480,7 +502,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Отримайте всі елементи з класом "js-floor"
   document.querySelectorAll('.floor').forEach(function (floor) {
     if (floor.getAttribute('data-floor-number') == 1) {
       floor.style.display = 'block';
@@ -488,10 +509,9 @@ document.addEventListener('DOMContentLoaded', function () {
       floor.style.display = 'none';
 
     }
-  });
+  })
   const floorRadioButtons = document.querySelectorAll('.js-floor');
 
-  // Додайте обробник подій для кожної радіо-кнопки
   floorRadioButtons.forEach(function (radioButton) {
     radioButton.addEventListener('change', function () {
       const selectedFloor = this.value
@@ -503,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const selectedFloorContainer = document.querySelector(`.floor[data-floor-number="${selectedFloor}"]`)
 
       if (selectedFloorContainer) {
-        selectedFloorContainer.style.display = 'block';
+        selectedFloorContainer.style.display = 'block'
       } else {
         console.error(`Елемент з data-floor-number="${selectedFloor}" не знайдений.`)
       }
