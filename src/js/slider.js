@@ -40,9 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   //slider main img
   if (document.querySelector('.slider-images')) {
+    const images = document.querySelectorAll('.slider-images img')
+    let currentImgIndex = 0
     function showNextImage() {
-      const images = document.querySelectorAll('.slider-images img')
-      let currentImgIndex = 0
       images[currentImgIndex].classList.remove('active')
       currentImgIndex = (currentImgIndex + 1) % images.length
       images[currentImgIndex].classList.add('active')
