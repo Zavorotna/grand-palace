@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let //floors navigation for slider
     floorNumber = document.getElementsByName("floor"),
     floors = document.querySelectorAll(".floor"),
-    currentFloor;
+    currentFloor = 1;
 
   initiateSlider();
 
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
       rc_btn_next = document.querySelector(".btn-arrow-next"),
       rc_slider_line = currentFloor.querySelector(".js-slider"),
-      rc_slides = currentFloor.querySelectorAll(".slide"),
+      rc_slides = currentFloor.querySelector(".slide"),
       scrollWidth = rc_slides[1].getBoundingClientRect().width,
       navigationButtons = document.querySelectorAll(".filter-queue__items input"),
       currentSlideBtn = document.querySelector(".currentSlideBtn"),
