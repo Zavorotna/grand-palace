@@ -370,7 +370,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Отримайте всі елементи з класом "js-floor"
   document.querySelectorAll('.floor').forEach(function (floor) {
     if (floor.getAttribute('data-floor-number') == 1) {
       floor.style.display = 'block';
@@ -378,10 +377,9 @@ document.addEventListener('DOMContentLoaded', function () {
       floor.style.display = 'none';
 
     }
-  });
+  })
   const floorRadioButtons = document.querySelectorAll('.js-floor');
 
-  // Додайте обробник подій для кожної радіо-кнопки
   floorRadioButtons.forEach(function (radioButton) {
     radioButton.addEventListener('change', function () {
       const selectedFloor = this.value
@@ -393,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const selectedFloorContainer = document.querySelector(`.floor[data-floor-number="${selectedFloor}"]`)
 
       if (selectedFloorContainer) {
-        selectedFloorContainer.style.display = 'block';
+        selectedFloorContainer.style.display = 'block'
       } else {
         console.error(`Елемент з data-floor-number="${selectedFloor}" не знайдений.`)
       }
