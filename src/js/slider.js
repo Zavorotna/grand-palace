@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     setTimeout(() => {
       slaiderComment()
-      buildScroll()
+      // buildScroll()
     }, 100)
   })
   slaiderComment()
