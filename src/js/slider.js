@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentImgIndex = (currentImgIndex + 1) % images.length
       images[currentImgIndex].classList.add('active')
     }
-  
+
     function startSlider() {
       let headerSlideInterval = setInterval(() => {
         showNextImage()
@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // popapMain.style.height = "55vh"
     }
   }
+  const screenWidth = window.innerWidth
 
   // попап з текстом
   function readMoreUpgrade() {
@@ -84,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
         desriptMore[index].classList.add("visible")
         btnCancel[index].style.display = "block"
         item.style.display = "none"
-        const screenWidth = window.innerWidth
         if (screenWidth >= 768) {
           commentBlock.style.paddingBottom = "15%"
         } else if (screenWidth >= 375 && screenWidth < 425) {
@@ -190,6 +190,117 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   }
+  // слайдер на прогрем будівництва
+  if(screenWidth <= 540) {
+
+    const carousel = document.querySelector('.construction-progress__galery')
+
+    let items = [...document.querySelectorAll(".construction-progress__img")]
+
+    const itemWidth = items[0].offsetWidth
+
+    let currentIndex = 0,
+      isAnimating = false,
+      touchStartX = 0,
+      touchEndX = 0,
+      intervalId;
+
+    function updateCarousel() {
+      while (carousel.firstChild) {
+        carousel.removeChild(carousel.firstChild)
+      }
+
+      const firstClone = items[items.length - 1].cloneNode(true)
+      firstClone.style.transform = `translateX: (-${itemWidth}px)`
+      carousel.insertAdjacentElement("afterbegin", firstClone)
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i].cloneNode(true)
+        item.style.transform = `translateX: (${i} * ${itemWidth}px)`
+        carousel.appendChild(item)
+      }
+    }
+
+    function goToIndex(index) {
+      isAnimating = true
+
+      const distance = -index * itemWidth
+
+      currentIndex = (currentIndex + items.length + index) % items.length
+
+      carousel.style.transition = 'transform .5s ease-in-out'
+      carousel.style.transform = `translateX(${distance}px)`
+
+      setTimeout(() => {
+        carousel.style.transition = 'none'
+        carousel.style.transform = 'none'
+        isAnimating = false
+        updateCarousel()
+      }, 500)
+    }
+
+    function nextSlide() {
+      items.push(items.shift())
+      goToIndex(1)
+    }
+
+    function prevSlide() {
+      items.unshift(items.pop())
+      goToIndex(-1)
+    }
+
+    function handleTouchStart(e) {
+      touchStartX = e.touches[0].clientX
+      stopSliderInterval()
+    }
+
+    function handleTouchMove(e) {
+      touchEndX = e.touches[0].clientX
+    }
+
+    function handleTouchEnd() {
+      const touchDiff = touchStartX - touchEndX
+      if (touchDiff > 50) {
+        nextSlide()
+      } else if (touchDiff < -50) {
+        prevSlide()
+      }
+      startSliderInterval()
+    }
+
+    function startSliderInterval() {
+      intervalId = setInterval(nextSlide, 4000) // 4 seconds interval
+    }
+
+    function stopSliderInterval() {
+      clearInterval(intervalId)
+    }
+    function resetInterval() {
+      stopSliderInterval()
+      startSliderInterval()
+  }
+    function setupSlider() {
+      if (window.innerWidth < 600) {
+        updateCarousel()
+        carousel.addEventListener('touchstart', handleTouchStart)
+        carousel.addEventListener('touchmove', handleTouchMove)
+        carousel.addEventListener('touchend', handleTouchEnd)
+        startSliderInterval()
+      } else {
+        carousel.removeEventListener('touchstart', handleTouchStart)
+        carousel.removeEventListener('touchmove', handleTouchMove)
+        carousel.removeEventListener('touchend', handleTouchEnd)
+        stopSliderInterval()
+      }
+    }
+
+    setupSlider()
+
+    window.addEventListener('resize', setupSlider)
+    window.addEventListener('mousemove', resetInterval)
+    window.addEventListener('click', resetInterval)
+
+  }
 
   //popup
   if (document.querySelector(".popap-block")) {
@@ -218,10 +329,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  let //floors navigation for slider
-    floorNumber = document.getElementsByName("floor"),
-    floors = document.querySelectorAll(".floor"),
-    currentFloor;
+  // let //floors navigation for slider
+  //   floorNumber = document.getElementsByName("floor"),
+  //   floors = document.querySelectorAll(".floor"),
+  //   currentFloor;
 
   // initiateSlider();
 
@@ -229,173 +340,140 @@ document.addEventListener("DOMContentLoaded", function () {
   //   e.oninput = initiateSlider;
   // })
 
-<<<<<<< HEAD
-  function initiateSlider() {
-    let currentFloor
-    for (var i = 0; i < floorNumber.length; i++) {
-      if (floorNumber[i].checked) {
-        for (let f = 0; f < floors.length; f++) {
-          floors[f].style.display = "none";
-          if (floors[f].getAttribute("data-floor-number") == floorNumber[i].value) {
-            currentFloor = floors[f];
-            currentFloor.style.display = "block";
-            return currentFloor
-          }
-        }
-        break;
-      }
-    }
-    //slider
-    console.log(currentFloor);
-    let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
-      rc_btn_next = document.querySelector(".btn-arrow-next"),
-      rc_slider_line = currentFloor.querySelector(".js-slider"),
-      rc_slides = currentFloor.querySelectorAll(".slide"),
-      scrollWidth = rc_slides[1].getBoundingClientRect().width,
-      navigationButtons = document.querySelectorAll(".filter-queue__items input"),
-      currentSlideBtn = document.querySelector(".currentSlideBtn"),
-      currentSlide;
-
-    for (let i = 0; i < rc_slides.length; i++) { // set data attribute with order numbers of each picture
-      navigationButtons[i].dataset.orderNumber = i;
-      rc_slides[i].dataset.orderNumber = i;
-    }
-=======
   // function initiateSlider() {
-    // function currFloor() {
-    //   for (var i = 0; i < floorNumber.length; i++) {
-    //     if (floorNumber[i].checked) {
-    //       for (let f = 0; f < floors.length; f++) {
-    //         floors[f].style.display = "none";
-    //         if (floors[f].getAttribute("data-floor-number") == floorNumber[i].value) {
-    //           currentFloor = floors[f];
-    //           currentFloor.style.display = "block";
-    //           return currentFloor
-    //         }
-    //       }
-    //       break;
-    //     }
-    //   }
+  // function currFloor() {
+  //   for (var i = 0; i < floorNumber.length; i++) {
+  //     if (floorNumber[i].checked) {
+  //       for (let f = 0; f < floors.length; f++) {
+  //         floors[f].style.display = "none";
+  //         if (floors[f].getAttribute("data-floor-number") == floorNumber[i].value) {
+  //           currentFloor = floors[f];
+  //           currentFloor.style.display = "block";
+  //           return currentFloor
+  //         }
+  //       }
+  //       break;
+  //     }
+  //   }
 
-    // }
-    // currFloor()
-    // //slider
-    // currentFloor = currFloor()
-    // console.log(currentFloor);
-    // let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
-    //   rc_btn_next = document.querySelector(".btn-arrow-next"),
-    //   rc_slider_line = document.querySelector(".js-slider"),
-    //   rc_slides = document.querySelectorAll(".slide"),
-    //   scrollWidth = rc_slides[1].getBoundingClientRect().width,
-    //   navigationButtons = document.querySelectorAll(".filter-queue__items input"),
-    //   currentSlideBtn = document.querySelector(".currentSlideBtn"),
-    //   currentSlide;
-    // // console.log(navigationButtons);
-    // for (let i = 0; i < rc_slides.length; i++) { // set data attribute with order numbers of each picture
-    //   // console.log(navigationButtons[i].dataset.orderNumber);
-    //   navigationButtons[i].dataset.orderNumber = i;
-    //   rc_slides[i].dataset.orderNumber = i;
-    // }
->>>>>>> 76fe16cbd0b0bcbcb65b80650137c6de931a102b
+  // }
+  // currFloor()
+  // //slider
+  // currentFloor = currFloor()
+  // console.log(currentFloor);
+  // let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
+  //   rc_btn_next = document.querySelector(".btn-arrow-next"),
+  //   rc_slider_line = document.querySelector(".js-slider"),
+  //   rc_slides = document.querySelectorAll(".slide"),
+  //   scrollWidth = rc_slides[1].getBoundingClientRect().width,
+  //   navigationButtons = document.querySelectorAll(".filter-queue__items input"),
+  //   currentSlideBtn = document.querySelector(".currentSlideBtn"),
+  //   currentSlide;
+  // // console.log(navigationButtons);
+  // for (let i = 0; i < rc_slides.length; i++) { // set data attribute with order numbers of each picture
+  //   // console.log(navigationButtons[i].dataset.orderNumber);
+  //   navigationButtons[i].dataset.orderNumber = i;
+  //   rc_slides[i].dataset.orderNumber = i;
+  // }
 
-    // rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth * currentSlideBtn.getAttribute("data-order-number"), 0); // set start position for slider
-    // rc_slides[currentSlideBtn.getAttribute("data-order-number")].classList.add("currentSlide");
+  // rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth * currentSlideBtn.getAttribute("data-order-number"), 0); // set start position for slider
+  // rc_slides[currentSlideBtn.getAttribute("data-order-number")].classList.add("currentSlide");
 
-    // currentSlide = document.querySelector(".currentSlide");
+  // currentSlide = document.querySelector(".currentSlide");
 
-    // buttonHide();
+  // buttonHide();
 
-    // navigationButtons.forEach(e => {
-    //   e.onclick = goToSlide; //call function with click on navigation button for slider
-    // });
+  // navigationButtons.forEach(e => {
+  //   e.onclick = goToSlide; //call function with click on navigation button for slider
+  // });
 
-    // rc_btn_next.onclick = goToNextSlide; // call function to move to next slide
-    // rc_btn_prev.onclick = goToPrevSlide; // call function to move to prev slide
+  // rc_btn_next.onclick = goToNextSlide; // call function to move to next slide
+  // rc_btn_prev.onclick = goToPrevSlide; // call function to move to prev slide
 
-    // function goToNextSlide(event) {
-    //   event.preventDefault();
+  // function goToNextSlide(event) {
+  //   event.preventDefault();
 
-    //   rc_slides = Array.from(rc_slides); //set class for current slide
-    //   let currentSlideNumber = rc_slides.indexOf(currentSlide);
-    //   currentSlide.classList.remove("currentSlide");
-    //   rc_slides[currentSlideNumber + 1].classList.add("currentSlide");
-    //   currentSlide = document.querySelector(".currentSlide");
+  //   rc_slides = Array.from(rc_slides); //set class for current slide
+  //   let currentSlideNumber = rc_slides.indexOf(currentSlide);
+  //   currentSlide.classList.remove("currentSlide");
+  //   rc_slides[currentSlideNumber + 1].classList.add("currentSlide");
+  //   currentSlide = document.querySelector(".currentSlide");
 
-    //   buttonHide();
+  //   buttonHide();
 
-    //   navigationButtons = Array.from(navigationButtons); //set class for current nav button
-    //   let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
-    //   currentSlideBtn.classList.remove("currentSlideBtn");
-    //   navigationButtons[currentButtonNumber + 1].classList.add("currentSlideBtn");
-    //   currentSlideBtn = document.querySelector(".currentSlideBtn");
+  //   navigationButtons = Array.from(navigationButtons); //set class for current nav button
+  //   let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
+  //   currentSlideBtn.classList.remove("currentSlideBtn");
+  //   navigationButtons[currentButtonNumber + 1].classList.add("currentSlideBtn");
+  //   currentSlideBtn = document.querySelector(".currentSlideBtn");
 
-    //   rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth, 0); //slider scroll
-    // }
+  //   rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth, 0); //slider scroll
+  // }
 
-    // function goToPrevSlide(event) {
-    //   event.preventDefault();
+  // function goToPrevSlide(event) {
+  //   event.preventDefault();
 
-    //   rc_slides = Array.from(rc_slides); //set class for current slide
-    //   let currentSlideNumber = rc_slides.indexOf(currentSlide);
-    //   currentSlide.classList.remove("currentSlide");
-    //   rc_slides[currentSlideNumber - 1].classList.add("currentSlide");
-    //   currentSlide = document.querySelector(".currentSlide");
+  //   rc_slides = Array.from(rc_slides); //set class for current slide
+  //   let currentSlideNumber = rc_slides.indexOf(currentSlide);
+  //   currentSlide.classList.remove("currentSlide");
+  //   rc_slides[currentSlideNumber - 1].classList.add("currentSlide");
+  //   currentSlide = document.querySelector(".currentSlide");
 
-    //   buttonHide();
-    //   console.log(rc_btn_prev.innerText);
+  //   buttonHide();
+  //   console.log(rc_btn_prev.innerText);
 
-    //   navigationButtons = Array.from(navigationButtons); //set class for current nav button
-    //   let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
-    //   currentSlideBtn.classList.remove("currentSlideBtn");
-    //   navigationButtons[currentButtonNumber - 1].classList.add("currentSlideBtn");
-    //   currentSlideBtn = document.querySelector(".currentSlideBtn");
+  //   navigationButtons = Array.from(navigationButtons); //set class for current nav button
+  //   let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
+  //   currentSlideBtn.classList.remove("currentSlideBtn");
+  //   navigationButtons[currentButtonNumber - 1].classList.add("currentSlideBtn");
+  //   currentSlideBtn = document.querySelector(".currentSlideBtn");
 
-    //   rc_slider_line.scroll(rc_slider_line.scrollLeft - scrollWidth, 0); //slider scroll
+  //   rc_slider_line.scroll(rc_slider_line.scrollLeft - scrollWidth, 0); //slider scroll
 
-    // }
+  // }
 
-    // function goToSlide(event) {
-    //   event.preventDefault();
-    //   currentSlideBtn.classList.remove("currentSlideBtn"); //set class for current nav button
-    //   event.target.classList.add("currentSlideBtn");
+  // function goToSlide(event) {
+  //   event.preventDefault();
+  //   currentSlideBtn.classList.remove("currentSlideBtn"); //set class for current nav button
+  //   event.target.classList.add("currentSlideBtn");
 
-    //   navigationButtons = Array.from(navigationButtons); //set class for current slide
-    //   rc_slides = Array.from(rc_slides);
-    //   currentSlideBtn = document.querySelector(".currentSlideBtn");
-    //   currentSlide.classList.remove("currentSlide");
-    //   rc_slides[navigationButtons.indexOf(currentSlideBtn)].classList.add("currentSlide");
-    //   currentSlide = document.querySelector(".currentSlide");
+  //   navigationButtons = Array.from(navigationButtons); //set class for current slide
+  //   rc_slides = Array.from(rc_slides);
+  //   currentSlideBtn = document.querySelector(".currentSlideBtn");
+  //   currentSlide.classList.remove("currentSlide");
+  //   rc_slides[navigationButtons.indexOf(currentSlideBtn)].classList.add("currentSlide");
+  //   currentSlide = document.querySelector(".currentSlide");
 
-    //   buttonHide();
+  //   buttonHide();
 
-    //   rc_slider_line.scroll(rc_slider_line.scrollLeft = scrollWidth * navigationButtons.indexOf(currentSlideBtn), 0); //slider scroll
-    // }
+  //   rc_slider_line.scroll(rc_slider_line.scrollLeft = scrollWidth * navigationButtons.indexOf(currentSlideBtn), 0); //slider scroll
+  // }
 
-    // function buttonHide() {
-    //   let btn_prev_text = rc_btn_prev.querySelector("span span"),
-    //     btn_next_text = rc_btn_next.querySelector("span span"),
-    //     order_name = document.querySelector(".plan-nav__title h3");
-    //   rc_slides = Array.from(rc_slides);
+  // function buttonHide() {
+  //   let btn_prev_text = rc_btn_prev.querySelector("span span"),
+  //     btn_next_text = rc_btn_next.querySelector("span span"),
+  //     order_name = document.querySelector(".plan-nav__title h3");
+  //   rc_slides = Array.from(rc_slides);
 
-    //   if (rc_slides.indexOf(currentSlide) == 1) {
-    //     rc_btn_prev.style.visibility = "visible";
-    //     rc_btn_next.style.visibility = "visible";
+  //   if (rc_slides.indexOf(currentSlide) == 1) {
+  //     rc_btn_prev.style.visibility = "visible";
+  //     rc_btn_next.style.visibility = "visible";
 
-    //     order_name.innerText = `II черга`;
-    //     btn_prev_text.innerText = `I черга`;
-    //     btn_next_text.innerText = `III черга`;
-    //   } else if (rc_slides.indexOf(currentSlide) == 0) {
-    //     order_name.innerText = `I черга`;
-    //     rc_btn_prev.style.visibility = "hidden";
-    //     rc_btn_next.style.visibility = "visible";
-    //     btn_next_text.innerText = `II черга`;
-    //   } else if (rc_slides.indexOf(currentSlide) == 2) {
-    //     order_name.innerText = `III черга`;
-    //     rc_btn_prev.style.visibility = "visible";
-    //     rc_btn_next.style.visibility = "hidden";
-    //     btn_prev_text.innerText = `II черга`;
-    //   }
-    // }
+  //     order_name.innerText = `II черга`;
+  //     btn_prev_text.innerText = `I черга`;
+  //     btn_next_text.innerText = `III черга`;
+  //   } else if (rc_slides.indexOf(currentSlide) == 0) {
+  //     order_name.innerText = `I черга`;
+  //     rc_btn_prev.style.visibility = "hidden";
+  //     rc_btn_next.style.visibility = "visible";
+  //     btn_next_text.innerText = `II черга`;
+  //   } else if (rc_slides.indexOf(currentSlide) == 2) {
+  //     order_name.innerText = `III черга`;
+  //     rc_btn_prev.style.visibility = "visible";
+  //     rc_btn_next.style.visibility = "hidden";
+  //     btn_prev_text.innerText = `II черга`;
+  //   }
+  // }
   // }
 
 })
