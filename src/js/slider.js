@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (document.querySelector('.slider-images')) {
     const images = document.querySelectorAll('.slider-images img')
     let currentImgIndex = 0
+
     function showNextImage() {
       images[currentImgIndex].classList.remove('active')
       currentImgIndex = (currentImgIndex + 1) % images.length
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     setTimeout(() => {
       slaiderComment()
+      buildScroll()
     }, 100)
   })
   slaiderComment()
@@ -191,8 +193,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
   // слайдер на прогрем будівництва
-  if(screenWidth <= 540) {
+  if (screenWidth <= 540) {
+    buildScroll()
+  }
 
+  function buildScroll() {
     const carousel = document.querySelector('.construction-progress__galery')
 
     let items = [...document.querySelectorAll(".construction-progress__img")]
@@ -275,10 +280,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function stopSliderInterval() {
       clearInterval(intervalId)
     }
+
     function resetInterval() {
       stopSliderInterval()
       startSliderInterval()
-  }
+    }
+
     function setupSlider() {
       if (window.innerWidth < 600) {
         updateCarousel()
