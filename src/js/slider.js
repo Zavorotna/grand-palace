@@ -222,15 +222,15 @@ document.addEventListener("DOMContentLoaded", function () {
   let //floors navigation for slider
     floorNumber = document.getElementsByName("floor"),
     floors = document.querySelectorAll(".floor"),
-    currentFloor;
+    currentFloor = 1;
 
-  initiateSlider();
+  // initiateSlider();
 
-  floorNumber.forEach((e) => {
-    e.oninput = initiateSlider;
-  })
+  // floorNumber.forEach((e) => {
+  //   e.oninput = initiateSlider;
+  // })
 
-  function initiateSlider() {
+  // function initiateSlider() {
     // function currFloor() {
     //   for (var i = 0; i < floorNumber.length; i++) {
     //     if (floorNumber[i].checked) {
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //     btn_prev_text.innerText = `II черга`;
     //   }
     // }
-  }
+  // }
 
 })
 
