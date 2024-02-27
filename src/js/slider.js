@@ -40,23 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   //slider main img
   if (document.querySelector('.slider-images')) {
-    const images = document.querySelectorAll('.slider-images img')
-    let currentImgIndex = 0
-
     function showNextImage() {
+      const images = document.querySelectorAll('.slider-images img')
+      let currentImgIndex = 0
       images[currentImgIndex].classList.remove('active')
       currentImgIndex = (currentImgIndex + 1) % images.length
       images[currentImgIndex].classList.add('active')
     }
-
+  
     function startSlider() {
       let headerSlideInterval = setInterval(() => {
         showNextImage()
       }, 3000)
     }
-
     startSlider()
   }
+
   if (document.querySelector(".popap-more-info")) {
     const popapMain = document.querySelector(".popap-more-info")
     popapHeight = window.innerHeight
@@ -219,10 +218,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  let //floors navigation for slider
-    floorNumber = document.getElementsByName("floor"),
-    floors = document.querySelectorAll(".floor"),
-    currentFloor = 1;
+  // let //floors navigation for slider
+  //   floorNumber = document.getElementsByName("floor"),
+  //   floors = document.querySelectorAll(".floor"),
+  //   currentFloor;
 
   // initiateSlider();
 
