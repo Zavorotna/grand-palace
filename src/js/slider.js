@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const popapMain = document.querySelector(".popap-more-info")
     popapHeight = window.innerHeight
     console.log(popapHeight);
-    if (popapHeight < 500) {
+    if (popapHeight < 600) {
       popapMain.style.overflowY = "scroll"
       popapMain.classList.add("scroll-style")
     } else {
