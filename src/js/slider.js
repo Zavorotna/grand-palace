@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       popapMain.style.overflowY = ""
       popapMain.classList.remove("scroll-style")
+      popapMain.style.height = "55vh"
     }
   }
 
