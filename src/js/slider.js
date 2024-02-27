@@ -300,8 +300,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setupSlider()
 
     // window.addEventListener('resize', setupSlider)
-    window.addEventListener('mousemove', resetInterval)
-    window.addEventListener('click', resetInterval)
+    // window.addEventListener('mousemove', resetInterval)
+    // window.addEventListener('click', resetInterval)
 
   }
 
