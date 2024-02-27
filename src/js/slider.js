@@ -114,39 +114,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 100)
   })
   slaiderComment()
+
   function slaiderComment() {
     if (document.querySelector('.carousel')) {
-  
+
       const carousel = document.querySelector('.carousel'),
         prevButton = document.querySelector('.left'),
         nextButton = document.querySelector('.right')
-  
+
       let items = [...document.querySelectorAll(".carousel-item")]
       const screenWidth = window.innerWidth
-  
+
       let itemWidth
-  
+
       if (screenWidth >= 1024) {
         const percent = 48
-  
+
         itemWidth = screenWidth * (percent / 100)
-  
+
       } else {
         itemWidth = items[0].offsetWidth + 75
       }
-  
+
       let currentIndex = 0,
         isAnimating = false
-  
+
       function updateCarousel() {
         while (carousel.firstChild) {
           carousel.removeChild(carousel.firstChild)
         }
-  
+
         const firstClone = items[items.length - 1].cloneNode(true)
         firstClone.style.left = `-${itemWidth}px`
         carousel.insertAdjacentElement("afterbegin", firstClone)
-  
+
         for (let i = 0; i < items.length; i++) {
           const item = items[i].cloneNode(true)
           item.style.left = i * itemWidth + "px"
@@ -154,19 +155,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         readMoreUpgrade()
       }
-  
+
       updateCarousel()
-  
+
       function goToIndex(index) {
         isAnimating = true
-  
+
         const distance = -index * itemWidth
-  
+
         currentIndex = (currentIndex + items.length + index) % items.length
-  
+
         carousel.style.transition = 'transform .5s ease-in-out'
         carousel.style.transform = `translateX(${distance}px)`
-  
+
         setTimeout(() => {
           carousel.style.transition = 'none'
           carousel.style.transform = 'none'
@@ -174,13 +175,13 @@ document.addEventListener("DOMContentLoaded", function () {
           updateCarousel()
         }, 500)
       }
-  
+
       nextButton.addEventListener('click', (e) => {
         e.preventDefault()
         items.push(items.shift())
         goToIndex(1)
       })
-  
+
       prevButton.addEventListener('click', (e) => {
         e.preventDefault()
         items.unshift(items.pop())
@@ -222,12 +223,13 @@ document.addEventListener("DOMContentLoaded", function () {
     floors = document.querySelectorAll(".floor"),
     currentFloor;
 
-  initiateSlider();
+  // initiateSlider();
 
-  floorNumber.forEach((e) => {
-    e.oninput = initiateSlider;
-  })
+  // floorNumber.forEach((e) => {
+  //   e.oninput = initiateSlider;
+  // })
 
+<<<<<<< HEAD
   function initiateSlider() {
     let currentFloor
     for (var i = 0; i < floorNumber.length; i++) {
@@ -258,105 +260,175 @@ document.addEventListener("DOMContentLoaded", function () {
       navigationButtons[i].dataset.orderNumber = i;
       rc_slides[i].dataset.orderNumber = i;
     }
+=======
+  // function initiateSlider() {
+    // function currFloor() {
+    //   for (var i = 0; i < floorNumber.length; i++) {
+    //     if (floorNumber[i].checked) {
+    //       for (let f = 0; f < floors.length; f++) {
+    //         floors[f].style.display = "none";
+    //         if (floors[f].getAttribute("data-floor-number") == floorNumber[i].value) {
+    //           currentFloor = floors[f];
+    //           currentFloor.style.display = "block";
+    //           return currentFloor
+    //         }
+    //       }
+    //       break;
+    //     }
+    //   }
 
-    rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth * currentSlideBtn.getAttribute("data-order-number"), 0); // set start position for slider
-    rc_slides[currentSlideBtn.getAttribute("data-order-number")].classList.add("currentSlide");
+    // }
+    // currFloor()
+    // //slider
+    // currentFloor = currFloor()
+    // console.log(currentFloor);
+    // let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
+    //   rc_btn_next = document.querySelector(".btn-arrow-next"),
+    //   rc_slider_line = document.querySelector(".js-slider"),
+    //   rc_slides = document.querySelectorAll(".slide"),
+    //   scrollWidth = rc_slides[1].getBoundingClientRect().width,
+    //   navigationButtons = document.querySelectorAll(".filter-queue__items input"),
+    //   currentSlideBtn = document.querySelector(".currentSlideBtn"),
+    //   currentSlide;
+    // // console.log(navigationButtons);
+    // for (let i = 0; i < rc_slides.length; i++) { // set data attribute with order numbers of each picture
+    //   // console.log(navigationButtons[i].dataset.orderNumber);
+    //   navigationButtons[i].dataset.orderNumber = i;
+    //   rc_slides[i].dataset.orderNumber = i;
+    // }
+>>>>>>> 76fe16cbd0b0bcbcb65b80650137c6de931a102b
 
-    currentSlide = document.querySelector(".currentSlide");
+    // rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth * currentSlideBtn.getAttribute("data-order-number"), 0); // set start position for slider
+    // rc_slides[currentSlideBtn.getAttribute("data-order-number")].classList.add("currentSlide");
 
-    buttonHide();
+    // currentSlide = document.querySelector(".currentSlide");
 
-    navigationButtons.forEach(e => {
-      e.onclick = goToSlide; //call function with click on navigation button for slider
-    });
+    // buttonHide();
 
-    rc_btn_next.onclick = goToNextSlide; // call function to move to next slide
-    rc_btn_prev.onclick = goToPrevSlide; // call function to move to prev slide
+    // navigationButtons.forEach(e => {
+    //   e.onclick = goToSlide; //call function with click on navigation button for slider
+    // });
 
-    function goToNextSlide(event) {
-      event.preventDefault();
+    // rc_btn_next.onclick = goToNextSlide; // call function to move to next slide
+    // rc_btn_prev.onclick = goToPrevSlide; // call function to move to prev slide
 
-      rc_slides = Array.from(rc_slides); //set class for current slide
-      let currentSlideNumber = rc_slides.indexOf(currentSlide);
-      currentSlide.classList.remove("currentSlide");
-      rc_slides[currentSlideNumber + 1].classList.add("currentSlide");
-      currentSlide = document.querySelector(".currentSlide");
+    // function goToNextSlide(event) {
+    //   event.preventDefault();
 
-      buttonHide();
+    //   rc_slides = Array.from(rc_slides); //set class for current slide
+    //   let currentSlideNumber = rc_slides.indexOf(currentSlide);
+    //   currentSlide.classList.remove("currentSlide");
+    //   rc_slides[currentSlideNumber + 1].classList.add("currentSlide");
+    //   currentSlide = document.querySelector(".currentSlide");
 
-      navigationButtons = Array.from(navigationButtons); //set class for current nav button
-      let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
-      currentSlideBtn.classList.remove("currentSlideBtn");
-      navigationButtons[currentButtonNumber + 1].classList.add("currentSlideBtn");
-      currentSlideBtn = document.querySelector(".currentSlideBtn");
+    //   buttonHide();
 
-      rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth, 0); //slider scroll
+    //   navigationButtons = Array.from(navigationButtons); //set class for current nav button
+    //   let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
+    //   currentSlideBtn.classList.remove("currentSlideBtn");
+    //   navigationButtons[currentButtonNumber + 1].classList.add("currentSlideBtn");
+    //   currentSlideBtn = document.querySelector(".currentSlideBtn");
+
+    //   rc_slider_line.scroll(rc_slider_line.scrollLeft += scrollWidth, 0); //slider scroll
+    // }
+
+    // function goToPrevSlide(event) {
+    //   event.preventDefault();
+
+    //   rc_slides = Array.from(rc_slides); //set class for current slide
+    //   let currentSlideNumber = rc_slides.indexOf(currentSlide);
+    //   currentSlide.classList.remove("currentSlide");
+    //   rc_slides[currentSlideNumber - 1].classList.add("currentSlide");
+    //   currentSlide = document.querySelector(".currentSlide");
+
+    //   buttonHide();
+    //   console.log(rc_btn_prev.innerText);
+
+    //   navigationButtons = Array.from(navigationButtons); //set class for current nav button
+    //   let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
+    //   currentSlideBtn.classList.remove("currentSlideBtn");
+    //   navigationButtons[currentButtonNumber - 1].classList.add("currentSlideBtn");
+    //   currentSlideBtn = document.querySelector(".currentSlideBtn");
+
+    //   rc_slider_line.scroll(rc_slider_line.scrollLeft - scrollWidth, 0); //slider scroll
+
+    // }
+
+    // function goToSlide(event) {
+    //   event.preventDefault();
+    //   currentSlideBtn.classList.remove("currentSlideBtn"); //set class for current nav button
+    //   event.target.classList.add("currentSlideBtn");
+
+    //   navigationButtons = Array.from(navigationButtons); //set class for current slide
+    //   rc_slides = Array.from(rc_slides);
+    //   currentSlideBtn = document.querySelector(".currentSlideBtn");
+    //   currentSlide.classList.remove("currentSlide");
+    //   rc_slides[navigationButtons.indexOf(currentSlideBtn)].classList.add("currentSlide");
+    //   currentSlide = document.querySelector(".currentSlide");
+
+    //   buttonHide();
+
+    //   rc_slider_line.scroll(rc_slider_line.scrollLeft = scrollWidth * navigationButtons.indexOf(currentSlideBtn), 0); //slider scroll
+    // }
+
+    // function buttonHide() {
+    //   let btn_prev_text = rc_btn_prev.querySelector("span span"),
+    //     btn_next_text = rc_btn_next.querySelector("span span"),
+    //     order_name = document.querySelector(".plan-nav__title h3");
+    //   rc_slides = Array.from(rc_slides);
+
+    //   if (rc_slides.indexOf(currentSlide) == 1) {
+    //     rc_btn_prev.style.visibility = "visible";
+    //     rc_btn_next.style.visibility = "visible";
+
+    //     order_name.innerText = `II черга`;
+    //     btn_prev_text.innerText = `I черга`;
+    //     btn_next_text.innerText = `III черга`;
+    //   } else if (rc_slides.indexOf(currentSlide) == 0) {
+    //     order_name.innerText = `I черга`;
+    //     rc_btn_prev.style.visibility = "hidden";
+    //     rc_btn_next.style.visibility = "visible";
+    //     btn_next_text.innerText = `II черга`;
+    //   } else if (rc_slides.indexOf(currentSlide) == 2) {
+    //     order_name.innerText = `III черга`;
+    //     rc_btn_prev.style.visibility = "visible";
+    //     rc_btn_next.style.visibility = "hidden";
+    //     btn_prev_text.innerText = `II черга`;
+    //   }
+    // }
+  // }
+
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Отримайте всі елементи з класом "js-floor"
+  document.querySelectorAll('.floor').forEach(function (floor) {
+    if (floor.getAttribute('data-floor-number') == 1) {
+      floor.style.display = 'block';
+    } else {
+      floor.style.display = 'none';
+
     }
+  });
+  const floorRadioButtons = document.querySelectorAll('.js-floor');
 
-    function goToPrevSlide(event) {
-      event.preventDefault();
+  // Додайте обробник подій для кожної радіо-кнопки
+  floorRadioButtons.forEach(function (radioButton) {
+    radioButton.addEventListener('change', function () {
+      const selectedFloor = this.value
 
-      rc_slides = Array.from(rc_slides); //set class for current slide
-      let currentSlideNumber = rc_slides.indexOf(currentSlide);
-      currentSlide.classList.remove("currentSlide");
-      rc_slides[currentSlideNumber - 1].classList.add("currentSlide");
-      currentSlide = document.querySelector(".currentSlide");
+      document.querySelectorAll('.floor').forEach(function (floor) {
+        floor.style.display = 'none'
+      })
 
-      buttonHide();
-      console.log(rc_btn_prev.innerText);
+      const selectedFloorContainer = document.querySelector(`.floor[data-floor-number="${selectedFloor}"]`)
 
-      navigationButtons = Array.from(navigationButtons); //set class for current nav button
-      let currentButtonNumber = navigationButtons.indexOf(currentSlideBtn);
-      currentSlideBtn.classList.remove("currentSlideBtn");
-      navigationButtons[currentButtonNumber - 1].classList.add("currentSlideBtn");
-      currentSlideBtn = document.querySelector(".currentSlideBtn");
-
-      rc_slider_line.scroll(rc_slider_line.scrollLeft - scrollWidth, 0); //slider scroll
-
-    }
-
-    function goToSlide(event) {
-      event.preventDefault();
-      currentSlideBtn.classList.remove("currentSlideBtn"); //set class for current nav button
-      event.target.classList.add("currentSlideBtn");
-
-      navigationButtons = Array.from(navigationButtons); //set class for current slide
-      rc_slides = Array.from(rc_slides);
-      currentSlideBtn = document.querySelector(".currentSlideBtn");
-      currentSlide.classList.remove("currentSlide");
-      rc_slides[navigationButtons.indexOf(currentSlideBtn)].classList.add("currentSlide");
-      currentSlide = document.querySelector(".currentSlide");
-
-      buttonHide();
-
-      rc_slider_line.scroll(rc_slider_line.scrollLeft = scrollWidth * navigationButtons.indexOf(currentSlideBtn), 0); //slider scroll
-    }
-
-    function buttonHide() {
-      let btn_prev_text = rc_btn_prev.querySelector("span span"),
-        btn_next_text = rc_btn_next.querySelector("span span"),
-        order_name = document.querySelector(".plan-nav__title h3");
-      rc_slides = Array.from(rc_slides);
-
-      if (rc_slides.indexOf(currentSlide) == 1) {
-        rc_btn_prev.style.visibility = "visible";
-        rc_btn_next.style.visibility = "visible";
-
-        order_name.innerText = `II черга`;
-        btn_prev_text.innerText = `I черга`;
-        btn_next_text.innerText = `III черга`;
-      } else if (rc_slides.indexOf(currentSlide) == 0) {
-        order_name.innerText = `I черга`;
-        rc_btn_prev.style.visibility = "hidden";
-        rc_btn_next.style.visibility = "visible";
-        btn_next_text.innerText = `II черга`;
-      } else if (rc_slides.indexOf(currentSlide) == 2) {
-        order_name.innerText = `III черга`;
-        rc_btn_prev.style.visibility = "visible";
-        rc_btn_next.style.visibility = "hidden";
-        btn_prev_text.innerText = `II черга`;
+      if (selectedFloorContainer) {
+        selectedFloorContainer.style.display = 'block';
+      } else {
+        console.error(`Елемент з data-floor-number="${selectedFloor}" не знайдений.`)
       }
-    }
-  }
-
+    })
+  })
 })
