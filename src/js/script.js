@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
     transitionOff(slider);
 
     if (window.matchMedia("(max-width: 540px)").matches) {
-      initMobile();
+      // initMobile();
     }
 
     setTimeout(() => {
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.addEventListener("focus", startSlider);
       slider.style.transform = "translateX(-200%)";
       cancelTouchEvent = touchEvent(slider, prev, next);
-      // startSlider();
+      startSlider();
       transitionEnd = true;
     }
 
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.onresize = () => {
       if (window.matchMedia("(max-width: 540px)").matches) {
-        // initMobile();
+        initMobile();
       } else {
         endMobile();
       }
