@@ -40,23 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   //slider main img
   if (document.querySelector('.slider-images')) {
-    const images = document.querySelectorAll('.slider-images img')
-    let currentImgIndex = 0
-
     function showNextImage() {
+      const images = document.querySelectorAll('.slider-images img')
+      let currentImgIndex = 0
       images[currentImgIndex].classList.remove('active')
       currentImgIndex = (currentImgIndex + 1) % images.length
       images[currentImgIndex].classList.add('active')
     }
-
+  
     function startSlider() {
       let headerSlideInterval = setInterval(() => {
         showNextImage()
       }, 3000)
     }
-
     startSlider()
   }
+
   if (document.querySelector(".popap-more-info")) {
     const popapMain = document.querySelector(".popap-more-info")
     popapHeight = window.innerHeight
@@ -221,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let //floors navigation for slider
     floorNumber = document.getElementsByName("floor"),
     floors = document.querySelectorAll(".floor"),
-    currentFloor = 1;
+    currentFloor;
 
   initiateSlider();
 
@@ -230,36 +229,32 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   function initiateSlider() {
-    function currFloor() {
-      for (var i = 0; i < floorNumber.length; i++) {
-        if (floorNumber[i].checked) {
-          for (let f = 0; f < floors.length; f++) {
-            floors[f].style.display = "none";
-            if (floors[f].getAttribute("data-floor-number") == floorNumber[i].value) {
-              currentFloor = floors[f];
-              currentFloor.style.display = "block";
-              return currentFloor
-            }
+    let currentFloor
+    for (var i = 0; i < floorNumber.length; i++) {
+      if (floorNumber[i].checked) {
+        for (let f = 0; f < floors.length; f++) {
+          floors[f].style.display = "none";
+          if (floors[f].getAttribute("data-floor-number") == floorNumber[i].value) {
+            currentFloor = floors[f];
+            currentFloor.style.display = "block";
+            return currentFloor
           }
-          break;
         }
+        break;
       }
-
     }
     //slider
-    currentFloor = currFloor()
     console.log(currentFloor);
     let rc_btn_prev = document.querySelector(".btn-arrow-prev"),
       rc_btn_next = document.querySelector(".btn-arrow-next"),
       rc_slider_line = currentFloor.querySelector(".js-slider"),
-      rc_slides = currentFloor.querySelector(".slide"),
+      rc_slides = currentFloor.querySelectorAll(".slide"),
       scrollWidth = rc_slides[1].getBoundingClientRect().width,
       navigationButtons = document.querySelectorAll(".filter-queue__items input"),
       currentSlideBtn = document.querySelector(".currentSlideBtn"),
       currentSlide;
-    // console.log(navigationButtons);
+
     for (let i = 0; i < rc_slides.length; i++) { // set data attribute with order numbers of each picture
-      // console.log(navigationButtons[i].dataset.orderNumber);
       navigationButtons[i].dataset.orderNumber = i;
       rc_slides[i].dataset.orderNumber = i;
     }
