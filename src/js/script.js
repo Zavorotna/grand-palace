@@ -60,49 +60,54 @@ document.addEventListener("DOMContentLoaded", function () {
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a");
   const header = document.querySelector(".header");
   const headerHeight = header.getBoundingClientRect().height;
-  
+
   let language = localStorage.getItem("lang") || (window.navigator ? (window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage) : "uk");
   language = language.substring(0, 2);
-  
+
   function changeLocation(lang) {
-      if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
-          location.pathname = "/ru" + location.pathname;
-      } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
-          location.pathname = location.pathname.replace("/ru", "");
-      }
-      toggleLanguage(lang);
+    if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
+      location.pathname = "/ru" + location.pathname;
+    } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
+      location.pathname = location.pathname.replace("/ru", "");
+    }
+    toggleLanguage(lang);
   }
-  
+
   if (lngToggle) {
-      lngToggle.forEach((item) => {
-          item.addEventListener("click", function (e) {
-              e.preventDefault();
-              localStorage.setItem("lang", this.dataset.lang)
-              changeLocation(this.dataset.lang)
-          });
+    lngToggle.forEach((item) => {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.setItem("lang", this.dataset.lang)
+        changeLocation(this.dataset.lang)
       });
+    });
   }
-  
+
   function toggleLanguage(lang) {
-      lngToggle.forEach((toggle) => {
-          toggle.classList.remove("active");
-      });
-  
-      const langToActivate = lang === "ru" ? "ru" : "uk";
-      const correspondingToggle = document.querySelector(`[data-lang="${langToActivate}"]`);
-      if (correspondingToggle) {
-          correspondingToggle.classList.add("active");
-      }
+    lngToggle.forEach((toggle) => {
+      toggle.classList.remove("active");
+    });
+
+    const langToActivate = lang === "ru" ? "ru" : "uk";
+    const correspondingToggle = document.querySelector(`[data-lang="${langToActivate}"]`);
+    if (correspondingToggle) {
+      correspondingToggle.classList.add("active");
+    }
   }
-  
+
   function detectLanguageFromPath() {
-      const pathSegments = location.pathname.split("/");
-      return pathSegments.length > 1 && pathSegments[1] === "ru" ? "ru" : "uk";
+    const pathSegments = location.pathname.split("/");
+    for (const segment of pathSegments) {
+      if (segment === "ru") {
+        return "ru";
+      }
+    }
+    return "uk";
   }
-  
+
   toggleLanguage(detectLanguageFromPath());
-  
-  
+
+
 
 
   //Menu
@@ -496,6 +501,6 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlides()
   }
 
-  
+
 
 })
