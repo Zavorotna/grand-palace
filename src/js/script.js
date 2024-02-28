@@ -58,67 +58,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // changeLocation(language);
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
-  header = document.querySelector(".header"),
-  headerHeight = header.getBoundingClientRect().height;
-
-  let language = localStorage.getItem("lang") ?
-    localStorage.getItem("lang") :
-    window.navigator ?
-    window.navigator.language ||
-    window.navigator.systemLanguage ||
-    window.navigator.userLanguage :
-    "uk";
-
-  language = language.substring(0, 2);
-
+    header = document.querySelector(".header"),
+    headerHeight = header.getBoundingClientRect().height
+  
+  let language = localStorage.getItem("lang") || 
+    (window.navigator ? (window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage) : "uk");
+  language = language.substring(0, 2)
+  
   function changeLocation(lang) {
     if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
-      location.pathname = "/ru" + location.pathname;
+      history.pushState({}, "", "/ru" + location.pathname)
     } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
-      location.pathname = location.pathname.replace("/ru", "");
+      history.pushState({}, "", location.pathname.replace("/ru", ""))
     }
-    toggleLanguage(document.querySelector(`[data-lang="${lang}"]`));
+    toggleLanguage(document.querySelector(`[data-lang="${lang}"]`))
   }
-
+  
   function toggleLanguage(item) {
     if (!item.classList.contains("active")) {
       lngToggle.forEach((item) => {
-        item.classList.remove("active");
-      });
-      item.classList.add("active");
+        item.classList.remove("active")
+      })
+      item.classList.add("active")
     }
   }
-
+  
   if (lngToggle) {
     lngToggle.forEach((item) => {
       item.addEventListener("click", function (e) {
-        e.preventDefault();
+        e.preventDefault()
         localStorage.setItem("lang", this.dataset.lang)
         changeLocation(this.dataset.lang)
-      });
-    });
+      })
+    })
   }
-
-  // Функція для визначення мови на основі шляху URL
+  
   function detectLanguageFromPath() {
-    const pathSegments = location.pathname.split("/");
-    if (pathSegments.length > 1 && pathSegments[1] === "ru") {
-      return "ru";
-    } else {
-      return "uk"; 
-    }
+    const pathSegments = location.pathname.split("/")
+    return pathSegments.length > 1 && pathSegments[1] === "ru" ? "ru" : "uk"
   }
-  toggleLanguage(document.querySelector(`[data-lang="${detectLanguageFromPath()}"]`));
+  
+  window.addEventListener("popstate", function () {
+    toggleLanguage(document.querySelector(`[data-lang="${detectLanguageFromPath()}"]`))
+  })
+  
+  toggleLanguage(document.querySelector(`[data-lang="${detectLanguageFromPath()}"]`))
+  
 
   //Menu
   const iconMenu = document.querySelector(".icon__menu"),
-    menuAncorLink = document.querySelectorAll('.menu__link[href^="#"]');
+    menuAncorLink = document.querySelectorAll('.menu__link[href^="#"]')
   if (iconMenu) {
     iconMenu.addEventListener("click", () => {
-      document.body.classList.toggle("lock");
-      iconMenu.classList.toggle("active");
-      header.classList.toggle("menu-active");
-    });
+      document.body.classList.toggle("lock")
+      iconMenu.classList.toggle("active")
+      header.classList.toggle("menu-active")
+    })
   }
 
   if (menuAncorLink) {
