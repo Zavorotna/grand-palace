@@ -57,53 +57,59 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 
   // changeLocation(language);
-  const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
-    header = document.querySelector(".header"),
-    headerHeight = header.getBoundingClientRect().height
-  
-  let language = localStorage.getItem("lang") || 
-    (window.navigator ? (window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage) : "uk");
-  language = language.substring(0, 2)
-  
-  function changeLocation(lang) {
-    if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
-      history.pushState({}, "", "/ru" + location.pathname)
-    } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
-      history.pushState({}, "", location.pathname.replace("/ru", ""))
+  const lngToggle = document.querySelectorAll(".header__lng-toggle > a");
+const header = document.querySelector(".header");
+const headerHeight = header.getBoundingClientRect().height;
+
+let language = localStorage.getItem("lang") ?
+  localStorage.getItem("lang") :
+  (window.navigator ?
+    (window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage) :
+    "uk");
+
+language = language.substring(0, 2);
+
+function changeLocation(lang) {
+  if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
+    location.pathname = "/ru" + location.pathname;
+  } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
+    location.pathname = location.pathname.replace("/ru", "");
+  }
+  toggleLanguage(document.querySelector(`[data-lang="${lang}"]`));
+}
+
+if (lngToggle) {
+  lngToggle.forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.setItem("lang", this.dataset.lang)
+      changeLocation(this.dataset.lang)
+    });
+  });
+}
+
+function toggleLanguage(item) {
+  if (item) {
+    lngToggle.forEach((toggle) => {
+      toggle.classList.remove("active");
+    });
+    item.classList.add("active");
+  } else {
+    const detectedLang = detectLanguageFromPath();
+    const correspondingToggle = document.querySelector(`[data-lang="${detectedLang}"]`);
+    if (correspondingToggle) {
+      toggleLanguage(correspondingToggle);
     }
-    toggleLanguage(document.querySelector(`[data-lang="${lang}"]`))
   }
-  
-  function toggleLanguage(item) {
-    if (!item.classList.contains("active")) {
-      lngToggle.forEach((item) => {
-        item.classList.remove("active")
-      })
-      item.classList.add("active")
-    }
-  }
-  
-  if (lngToggle) {
-    lngToggle.forEach((item) => {
-      item.addEventListener("click", function (e) {
-        e.preventDefault()
-        localStorage.setItem("lang", this.dataset.lang)
-        changeLocation(this.dataset.lang)
-      })
-    })
-  }
-  
-  function detectLanguageFromPath() {
-    const pathSegments = location.pathname.split("/")
-    return pathSegments.length > 1 && pathSegments[1] === "ru" ? "ru" : "uk"
-  }
-  
-  window.addEventListener("popstate", function () {
-    toggleLanguage(document.querySelector(`[data-lang="${detectLanguageFromPath()}"]`))
-  })
-  
-  toggleLanguage(document.querySelector(`[data-lang="${detectLanguageFromPath()}"]`))
-  
+}
+
+function detectLanguageFromPath() {
+  const pathSegments = location.pathname.split("/");
+  return pathSegments.length > 1 && pathSegments[1] === "ru" ? "ru" : "uk";
+}
+
+toggleLanguage(null); // Викликаємо для встановлення активного класу на основі мови у URL
+
 
   //Menu
   const iconMenu = document.querySelector(".icon__menu"),
