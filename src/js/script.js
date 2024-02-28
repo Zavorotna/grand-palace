@@ -15,9 +15,51 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+  // const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
+  //   header = document.querySelector(".header"),
+  //   headerHeight = header.getBoundingClientRect().height
+
+  // let language = localStorage.getItem("lang") ?
+  //   localStorage.getItem("lang") :
+  //   window.navigator ?
+  //   window.navigator.language ||
+  //   window.navigator.systemLanguage ||
+  //   window.navigator.userLanguage :
+  //   "uk";
+
+  // language = language.substring(0, 2);
+
+  // function changeLocation(lang) {
+  //   if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
+  //     location.pathname = "/ru" + location.pathname;
+  //   } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
+  //     location.pathname = location.pathname.replace("/ru", "");
+  //   }
+  //   toggleLanguage(document.querySelector(`[data-lang="${lang}"]`));
+  // }
+
+  // if (lngToggle) {
+  //   lngToggle.forEach((item) => {
+  //     item.addEventListener("click", function (e) {
+  //       e.preventDefault();
+  //       localStorage.setItem("lang", this.dataset.lang)
+  //       changeLocation(this.dataset.lang)
+  //     });
+  //   });
+  // }
+
+  // function toggleLanguage(item) {
+  //   if (!item.classList.contains("active")) {
+  //     lngToggle.forEach((item) => {
+  //       item.classList.toggle("active");
+  //     });
+  //   }
+  // }
+
+  // changeLocation(language);
   const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
-    header = document.querySelector(".header"),
-    headerHeight = header.getBoundingClientRect().height
+  header = document.querySelector(".header"),
+  headerHeight = header.getBoundingClientRect().height;
 
   let language = localStorage.getItem("lang") ?
     localStorage.getItem("lang") :
@@ -38,6 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleLanguage(document.querySelector(`[data-lang="${lang}"]`));
   }
 
+  function toggleLanguage(item) {
+    if (!item.classList.contains("active")) {
+      lngToggle.forEach((item) => {
+        item.classList.remove("active");
+      });
+      item.classList.add("active");
+    }
+  }
+
   if (lngToggle) {
     lngToggle.forEach((item) => {
       item.addEventListener("click", function (e) {
@@ -48,15 +99,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function toggleLanguage(item) {
-    if (!item.classList.contains("active")) {
-      lngToggle.forEach((item) => {
-        item.classList.toggle("active");
-      });
+  // Функція для визначення мови на основі шляху URL
+  function detectLanguageFromPath() {
+    const pathSegments = location.pathname.split("/");
+    if (pathSegments.length > 1 && pathSegments[1] === "ru") {
+      return "ru";
+    } else {
+      return "uk"; 
     }
   }
-
-  changeLocation(language);
+  toggleLanguage(document.querySelector(`[data-lang="${detectLanguageFromPath()}"]`));
 
   //Menu
   const iconMenu = document.querySelector(".icon__menu"),
