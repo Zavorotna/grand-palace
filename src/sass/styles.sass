@@ -1,5 +1,6 @@
 @import components/vars
 @import components/mixins
+@import components/sprite
 
 *, *::before, *::after
   box-sizing: border-box
@@ -7,6 +8,7 @@
 html
   height: 100%
   font-size: 10px
+
 body
   margin: 0
   height: 100%
@@ -53,7 +55,9 @@ main
 
 figure
   margin: 0
-
+// .overflow
+//   position: absolute
+//   top: -100%
 .body-wrapper
   min-height: 100%
   display: flex
@@ -250,6 +254,7 @@ figure.news
 
 .tr-news
   display: flex
+  align-items: center
   flex-wrap: wrap
   p
     margin: 0 !important
@@ -308,6 +313,9 @@ figure.news
   .tr-news .td
     padding-right: 20px
 
+.tr-news-fix .td
+  min-width: 252px
+
 .news-location
   position: relative
   &::before
@@ -319,7 +327,9 @@ figure.news
     background-size: cover
 
 .news-card
-  padding: 50px 0 100px 0
+  padding: 30px 0 100px 0
+  +media(490)
+    padding: 70px 0 100px 0
 
 .gallery-sm-photoes,
 .news-card
@@ -334,9 +344,23 @@ figure.news
   padding-top: 20px
 
 .photo-slider
-  width: 100%
-  +media(570)
+  width: 45%
+  +media(700)
     width: 48%
+.gallery-sm-photoes
+  img
+    object-fit: cover
+    height: 15vh
+    +media(700)
+      height: 30vh
+    +media(1260)
+      height: 15vw
+
+.general-img
+  object-fit: cover
+  height: 60vw
+  +media(1260)
+    height: 30vw
 
 .news-gallery,
 .news-description
@@ -373,3 +397,144 @@ figure.news
   top: 50%
   transform: translateY(-50%)
   z-index: 1
+
+.news-location
+  display: flex
+  align-items: center
+  svg
+    width: 15px
+    height: 20px
+
+
+.menu-active .phone-link
+  display: none
+
+.phone-link
+  display: flex
+  align-items: center
+  svg
+    width: 13px
+    height: 20px
+
+.news-location,
+.phone-link
+  svg
+    margin-right: 10px
+    
+.validation
+  position: relative
+
+.phone-validation
+  &:hover
+    background-color: #D9D9D9
+
+.phone-validation.correct-number
+  border: 1px solid #30BC21
+
+.phone-validation.incorrect-number
+  border: 1px solid #DE1A1A
+
+.d-none
+  display: none
+
+.incorect-number-test
+  position: absolute
+  top: 45%
+  left: 50%
+  p
+    font-size: 12px
+    font-weight: 400
+    color: #DE1A1A
+    margin-top: -5px
+    margin-bottom: 10px
+
+
+.header__lng-toggle
+  margin-left: 0
+  +media(390)
+    margin-left: auto
+
+.icon__menu
+  position: absolute
+  right: 10px
+  top: 25px
+  +media(390)
+    position: relative
+    right: auto
+    top: 0
+
+header .phone-list .phone-link
+  font-size: 1.4rem
+  position: absolute
+  top: 30px
+  left: 25px 
+  +media(768)
+    position: relative
+    top: auto
+    left: auto
+  +media(800)
+    font-size: 1.8rem
+
+.plan-nav__img
+  .btn-arrow
+    display: none
+
+.phone-link
+  strong
+    display: none
+    +media(1085)
+      display: block
+
+header .social-icons 
+  position: absolute
+  top: 18px
+  left: 45px 
+  svg
+    +media(768)
+      width: 25px
+      height: 25px
+      margin-left: -5px
+    +media(820)
+      width: auto
+      height: auto
+      margin-left: 0
+  +media(768)
+    position: relative
+    top: auto
+    left: auto
+
+
+.menu-active 
+  padding-top: 70px
+  +media(390)
+      padding-top: 0
+
+.footer__phone .phone-link
+  padding: 0
+  +media(370)
+    padding: 5px 10px 4px 40px
+
+.phone-list
+  justify-content: center
+  +media(370)
+    justify-content: flex-start
+
+.menu-active svg
+  display: none
+
+.text-wrap > span > span:last-child
+  display: block
+  +media(855)
+    display: inline
+
+.contacts-info__item .phone-link
+  margin: auto
+  +media(579)
+    margin: 0
+
+.phone-link__padding
+  display: flex
+  justify-content: center
+  padding-left: 23px
+  +media(579)
+    justify-content: start

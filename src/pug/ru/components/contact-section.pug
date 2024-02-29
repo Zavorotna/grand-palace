@@ -8,12 +8,15 @@ section.contacts
         .contacts-info__items.contacts__item
           .contacts-info__item(itemscope, itemtype='https://schema.org/ContactPoint')
             h2 Телефоны
-            .phone-list.contacts-info__phones
-              a.phone-link(href='tel:+380671321563', itemprop='telephone')
-                +svg('phone')
-                |(067)&nbsp;132-15-63
-              a.phone-link(href='tel:+380671321563', itemprop='telephone')
-                |(067)&nbsp;132-15-63
+            .phone-list.contacts-info__phones.d-block
+              a.phone-link(href='tel:+380980555500' itemprop='telephone')
+                +svg('phone', 19, 29)
+                |(098)&nbsp;055 55 00
+            a.phone-link.phone-link__padding(href='tel:+380980555500' itemprop='telephone')
+              |(098)&nbsp;055 55 00
+              //- a.phone-link_contact(href='tel:+380980555500' itemprop='telephone')
+              //-   +svg('phone', 19, 29)
+              //-   |(098)&nbsp;055 55 00
           .contacts-info__item(itemscope, itemtype='https://schema.org/ContactPoint')
             h2 Почта
             .contacts-info__email

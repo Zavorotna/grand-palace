@@ -1,0 +1,73 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0")
+    link(rel="stylesheet" href="../css/styles.css")
+    title Grand Palace - старт продажу нової черги
+    meta(name="description" content="")
+    meta(name="keywords" content="")
+    meta(name="author" content="Grand Palace")
+    meta(name="publisher" content="Grand Palace")
+    meta(name="robots" content="index follow")  
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Roboto:wght@400;500&display=swap' rel='stylesheet')
+    link(rel='icon' href='img/favicon.ico')
+    link(rel='canonical' href='https://www.grandpalace.km.ua/one-news.html')
+    meta(property="og:title" content="Grand Palace - старт продажу нової черги")
+    meta(property="og:description" content="")
+    meta(property="og:image" content="img/logo.jpg")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://www.grandpalace.km.ua/one-news.html")
+
+  body(tabindex="0")
+    .body-wrapper
+      include ../components/vars
+      - var location = "/ru/"
+      include components/mixins
+      include components/header
+      include components/sprite
+      
+      main.main.container
+        .news-card 
+            .news-gallery 
+                img.general-img(src="../img/news-photo1.jpg", alt="новини Grand Palace")
+                .gallery-sm-photoes
+                    .photo-slider 
+                        img(src="../img/bg-fitness.jpg", alt="Останні події в ЖК Гранд Палац")
+                    .photo-slider 
+                        img(src="../img/galery4.jpg", alt="Актуальні відомості від Grand Palace")
+            .news-description
+                h1 Старт продаж новых очередей в grand palace начат!
+                hr
+                h2 Старт продаж новых очередей Grand Palace начат!
+                p Поспешите купить квартиру в ЖК бизнес-класса в центре Хмельницкого. Закрытый двор, панорама на город, подземный паркинг, офисные помещения, химчистка, парковка, детская площадка.
+
+                p Мы открыли продажи на квартиры второй очереди!
+                .table-news 
+                    .tr-news 
+                        p.td Общее количество квартир -&nbsp;
+                        p 354
+                    .tr-news 
+                        p.td Сроки сдачи -&nbsp; 
+                        p II квартал 2025 и II квартал 2026 года.
+                hr
+                .table-news.table-td-styled.tr-news-fix
+                    .tr-news
+                        p.td Посетите отдел продаж
+                        p.news-location
+                            +svg('pin-footer', 100, 10)
+                            | м. Хмельницький вул. Свободи, 14
+                    .tr-news
+                        p.td Или звоните
+                        p 
+                            a.phone-link(href='tel:+380980555500' itemprop='telephone')
+                                +svg('phone', 19, 29)
+                                |(098)&nbsp;055 55 00
+                a.short-description__btn.btn(href="news.html") все новости
+
+    script(src="../js/scripts.js")
+    include components/footer
+

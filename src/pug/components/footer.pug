@@ -17,11 +17,18 @@ footer.footer(itemprop='publisher', itemscope, itemtype='http://schema.org/WPFoo
           p Відділення продажу
           p м. Хмельницький, вул. Подільська, 115
       .footer__phone.phone-list.info-item(itemscope itemtype='http://schema.org/ContactPoint')
-        a.phone-link(href='tel:+380670098700' itemprop='telephone')
+        a.phone-link(href='tel:+380980555500' itemprop='telephone')
           +svg('phone', 19, 29)
-          |(067)&nbsp;00-98-700
-        a.phone-link(href='tel:+380670098700' itemprop='telephone')
-          +svg('phone', 19, 29)
-          |(067)&nbsp;00-98-700
+          |(098)&nbsp;055 55 00
+        //- a.phone-link(href='tel:+380980555500' itemprop='telephone')
+        //-   +svg('phone', 19, 29)
+        //-   |(098)&nbsp;055 55 00
+        span.social-icons.flex-icons
+          a.wsup(href="#")
+            +svg('wsup', 29, 29) 
+          a.telegram(href="#")
+            +svg('telegram', 34, 29) 
+          a.viber(href="#")
+            +svg('viber', 27, 29) 
     .copyright
       p &copy; Copyright by &laquo;Grand Palace&raquo; 2012—2021

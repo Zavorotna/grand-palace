@@ -1,17 +1,67 @@
 document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".news-gallery ")) {
+    let productImages = document.querySelectorAll('.gallery-sm-photoes img'),
+      generalImg = document.querySelector('.general-img')
 
-  const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
-    header = document.querySelector(".header"),
-    headerHeight = header.getBoundingClientRect().height
+    productImages.forEach(function (image) {
+      image.addEventListener('click', function () {
+        let clickedImageUrl = this.src,
+          generalSrc = generalImg.src
 
-  let language = localStorage.getItem("lang") ?
-    localStorage.getItem("lang") :
-    window.navigator ?
-    window.navigator.language ||
-    window.navigator.systemLanguage ||
-    window.navigator.userLanguage :
-    "uk";
 
+        generalImg.src = clickedImageUrl
+
+        this.src = generalSrc
+      });
+    });
+  }
+  // const lngToggle = document.querySelectorAll(".header__lng-toggle > a"),
+  //   header = document.querySelector(".header"),
+  //   headerHeight = header.getBoundingClientRect().height
+
+  // let language = localStorage.getItem("lang") ?
+  //   localStorage.getItem("lang") :
+  //   window.navigator ?
+  //   window.navigator.language ||
+  //   window.navigator.systemLanguage ||
+  //   window.navigator.userLanguage :
+  //   "uk";
+
+  // language = language.substring(0, 2);
+
+  // function changeLocation(lang) {
+  //   if (lang === "ru" && !/^\/ru/.test(location.pathname)) {
+  //     location.pathname = "/ru" + location.pathname;
+  //   } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
+  //     location.pathname = location.pathname.replace("/ru", "");
+  //   }
+  //   toggleLanguage(document.querySelector(`[data-lang="${lang}"]`));
+  // }
+
+  // if (lngToggle) {
+  //   lngToggle.forEach((item) => {
+  //     item.addEventListener("click", function (e) {
+  //       e.preventDefault();
+  //       localStorage.setItem("lang", this.dataset.lang)
+  //       changeLocation(this.dataset.lang)
+  //     });
+  //   });
+  // }
+
+  // function toggleLanguage(item) {
+  //   if (!item.classList.contains("active")) {
+  //     lngToggle.forEach((item) => {
+  //       item.classList.toggle("active");
+  //     });
+  //   }
+  // }
+
+  // changeLocation(language);
+  const lngToggle = document.querySelectorAll(".header__lng-toggle > a");
+  const header = document.querySelector(".header");
+  const headerHeight = header.getBoundingClientRect().height;
+
+  let language = localStorage.getItem("lang") || (window.navigator ? (window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage) : "uk");
   language = language.substring(0, 2);
 
   function changeLocation(lang) {
@@ -20,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (lang !== "ru" && /^\/ru/.test(location.pathname)) {
       location.pathname = location.pathname.replace("/ru", "");
     }
-    toggleLanguage(document.querySelector(`[data-lang="${lang}"]`));
+    toggleLanguage(lang);
   }
 
   if (lngToggle) {
@@ -33,25 +83,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function toggleLanguage(item) {
-    if (!item.classList.contains("active")) {
-      lngToggle.forEach((item) => {
-        item.classList.toggle("active");
-      });
+  function toggleLanguage(lang) {
+    lngToggle.forEach((toggle) => {
+      toggle.classList.remove("active");
+    });
+
+    const langToActivate = lang === "ru" ? "ru" : "uk";
+    const correspondingToggle = document.querySelector(`[data-lang="${langToActivate}"]`);
+    if (correspondingToggle) {
+      correspondingToggle.classList.add("active");
     }
   }
 
-  changeLocation(language);
+  function detectLanguageFromPath() {
+    const pathSegments = location.pathname.split("/");
+    for (const segment of pathSegments) {
+      if (segment === "ru") {
+        return "ru";
+      }
+    }
+    return "uk";
+  }
+
+  toggleLanguage(detectLanguageFromPath());
+
+
+
 
   //Menu
   const iconMenu = document.querySelector(".icon__menu"),
-    menuAncorLink = document.querySelectorAll('.menu__link[href^="#"]');
+    menuAncorLink = document.querySelectorAll('.menu__link[href^="#"]')
   if (iconMenu) {
     iconMenu.addEventListener("click", () => {
-      document.body.classList.toggle("lock");
-      iconMenu.classList.toggle("active");
-      header.classList.toggle("menu-active");
-    });
+      document.body.classList.toggle("lock")
+      iconMenu.classList.toggle("active")
+      header.classList.toggle("menu-active")
+    })
   }
 
   if (menuAncorLink) {
@@ -190,156 +257,156 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // mobile Slider for Construction block
 
-  (function mobileSliderOfConstruction() {
-    const slider = document.querySelector(".construction-progress__galery");
-    let cancelTouchEvent;
+  // (function mobileSliderOfConstruction() {
+  //   const slider = document.querySelector(".construction-progress__galery");
+  //   let cancelTouchEvent;
 
-    let sliderInterval;
-    let direction = -1;
-    let transitionEnd = true;
-    const transitionDuration = 0.75;
+  //   let sliderInterval;
+  //   let direction = -1;
+  //   let transitionEnd = true;
+  //   const transitionDuration = 0.75;
 
-    const transitionOn = function (target, duration) {
-      //cn target.style.transition = `${duration}s ease`;
-    };
+  //   const transitionOn = function (target, duration) {
+  //     //cn target.style.transition = `${duration}s ease`;
+  //   };
 
-    const transitionOff = function (target) {
-      //cn target.style.transition = "none";
-    };
+  //   const transitionOff = function (target) {
+  //     //cn target.style.transition = "none";
+  //   };
 
-    const next = function () {
-      if (direction === 1) {
-        if (transitionEnd) {
-          slider.style.transform = "translateX(-300%)";
-          transitionEnd = false;
-        } else {
-          slider.style.transform = "translateX(-200%)";
-          transitionEnd = true;
-        }
-        direction = -1;
-      } else {
-        slider.style.transform = "translateX(-300%)";
-        transitionEnd = false;
-      }
-    };
+  //   const next = function () {
+  //     if (direction === 1) {
+  //       if (transitionEnd) {
+  //         slider.style.transform = "translateX(-300%)";
+  //         transitionEnd = false;
+  //       } else {
+  //         slider.style.transform = "translateX(-200%)";
+  //         transitionEnd = true;
+  //       }
+  //       direction = -1;
+  //     } else {
+  //       slider.style.transform = "translateX(-300%)";
+  //       transitionEnd = false;
+  //     }
+  //   };
 
-    const prev = function () {
-      if (direction === -1) {
-        if (transitionEnd) {
-          slider.style.transform = "translateX(-100%)";
-          transitionEnd = false;
-        } else {
-          slider.style.transform = "translateX(-200%)";
-          transitionEnd = true;
-        }
-        direction = 1;
-      } else {
-        slider.style.transform = "translateX(-100%)";
-        transitionEnd = false;
-      }
-    };
+  //   const prev = function () {
+  //     if (direction === -1) {
+  //       if (transitionEnd) {
+  //         slider.style.transform = "translateX(-100%)";
+  //         transitionEnd = false;
+  //       } else {
+  //         slider.style.transform = "translateX(-200%)";
+  //         transitionEnd = true;
+  //       }
+  //       direction = 1;
+  //     } else {
+  //       slider.style.transform = "translateX(-100%)";
+  //       transitionEnd = false;
+  //     }
+  //   };
 
-    const startSlider = function () {
-      sliderInterval = setInterval(next, 4000);
-    };
+  //   const startSlider = function () {
+  //     sliderInterval = setInterval(next, 4000);
+  //   };
 
-    const stopSlider = function () {
-      clearInterval(sliderInterval);
-    };
+  //   const stopSlider = function () {
+  //     clearInterval(sliderInterval);
+  //   };
 
-    transitionOff(slider);
+  //   transitionOff(slider);
 
-    if (window.matchMedia("(max-width: 540px)").matches) {
-      initMobile();
-    }
+  //   if (window.matchMedia("(max-width: 540px)").matches) {
+  //     initMobile();
+  //   }
 
-    setTimeout(() => {
-      transitionOn(slider, transitionDuration);
-    }, 0);
+  //   setTimeout(() => {
+  //     transitionOn(slider, transitionDuration);
+  //   }, 0);
 
-    function addSlides() {
-      const sliderItem = document.querySelectorAll(".construction-progress__img");
-      if (sliderItem.length >= 5) {
-        slider.prepend(slider.lastElementChild);
-        slider.prepend(slider.lastElementChild);
-      } else {
-        for (let i = 0; i < 2; i++) {
-          let cloneAppend, clonePreppend;
-          cloneAppend = sliderItem[i].cloneNode(true);
-          clonePreppend = sliderItem[sliderItem.length - i - 1].cloneNode(true);
-          cloneAppend.classList.add("clone");
-          clonePreppend.classList.add("clone");
-          slider.append(cloneAppend);
-          slider.prepend(clonePreppend);
-        }
-      }
-    }
+  //   function addSlides() {
+  //     const sliderItem = document.querySelectorAll(".construction-progress__img");
+  //     if (sliderItem.length >= 5) {
+  //       slider.prepend(slider.lastElementChild);
+  //       slider.prepend(slider.lastElementChild);
+  //     } else {
+  //       for (let i = 0; i < 2; i++) {
+  //         let cloneAppend, clonePreppend;
+  //         cloneAppend = sliderItem[i].cloneNode(true);
+  //         clonePreppend = sliderItem[sliderItem.length - i - 1].cloneNode(true);
+  //         cloneAppend.classList.add("clone");
+  //         clonePreppend.classList.add("clone");
+  //         slider.append(cloneAppend);
+  //         slider.prepend(clonePreppend);
+  //       }
+  //     }
+  //   }
 
-    function removeCloneSlides() {
-      const sliderCloneItem = document.querySelectorAll(
-        ".construction-progress__img.clone"
-      );
+  //   function removeCloneSlides() {
+  //     const sliderCloneItem = document.querySelectorAll(
+  //       ".construction-progress__img.clone"
+  //     );
 
-      sliderCloneItem.forEach((item) => {
-        item.remove();
-      });
-    }
+  //     sliderCloneItem.forEach((item) => {
+  //       item.remove();
+  //     });
+  //   }
 
-    function initMobile() {
-      addSlides();
-      slider.addEventListener("transitionend", transitionend);
-      slider.addEventListener("touchstart", stopSlider);
-      slider.addEventListener("touchend", startSlider);
-      window.addEventListener("blur", stopSlider);
-      window.addEventListener("focus", startSlider);
-      slider.style.transform = "translateX(-200%)";
-      cancelTouchEvent = touchEvent(slider, prev, next);
-      // startSlider();
-      transitionEnd = true;
-    }
+  //   function initMobile() {
+  //     addSlides();
+  //     slider.addEventListener("transitionend", transitionend);
+  //     slider.addEventListener("touchstart", stopSlider);
+  //     slider.addEventListener("touchend", startSlider);
+  //     window.addEventListener("blur", stopSlider);
+  //     window.addEventListener("focus", startSlider);
+  //     slider.style.transform = "translateX(-200%)";
+  //     cancelTouchEvent = touchEvent(slider, prev, next);
+  //     // startSlider();
+  //     transitionEnd = true;
+  //   }
 
-    function endMobile() {
-      removeCloneSlides();
-      stopSlider();
-      slider.removeEventListener("transitionend", transitionend);
-      slider.removeEventListener("touchstart", cancelTouchEvent.touchStartSlider);
-      slider.removeEventListener("touchmove", cancelTouchEvent.touchMoveSlider);
-      slider.removeEventListener("touchend", cancelTouchEvent.touchEndSlider);
-      slider.removeEventListener("touchstart", stopSlider);
-      slider.removeEventListener("touchend", startSlider);
-      window.removeEventListener("blur", stopSlider);
-      window.removeEventListener("focus", startSlider);
-      slider.style.transition = "none";
-      slider.style.transform = "translateX(0%)";
-    }
+  //   function endMobile() {
+  //     removeCloneSlides();
+  //     stopSlider();
+  //     slider.removeEventListener("transitionend", transitionend);
+  //     slider.removeEventListener("touchstart", cancelTouchEvent.touchStartSlider);
+  //     slider.removeEventListener("touchmove", cancelTouchEvent.touchMoveSlider);
+  //     slider.removeEventListener("touchend", cancelTouchEvent.touchEndSlider);
+  //     slider.removeEventListener("touchstart", stopSlider);
+  //     slider.removeEventListener("touchend", startSlider);
+  //     window.removeEventListener("blur", stopSlider);
+  //     window.removeEventListener("focus", startSlider);
+  //     slider.style.transition = "none";
+  //     slider.style.transform = "translateX(0%)";
+  //   }
 
-    function transitionend() {
-      if (!transitionEnd) {
-        if (direction === 1) {
-          slider.prepend(slider.lastElementChild);
-        } else {
-          slider.append(slider.firstElementChild);
-        }
-      }
-      direction = -1;
-      transitionOff(slider);
-      slider.style.transform = "translateX(-200%)";
-      setTimeout(() => {
-        transitionOn(slider, transitionDuration);
-      }, 0);
-      transitionEnd = true;
-    }
+  //   function transitionend() {
+  //     if (!transitionEnd) {
+  //       if (direction === 1) {
+  //         slider.prepend(slider.lastElementChild);
+  //       } else {
+  //         slider.append(slider.firstElementChild);
+  //       }
+  //     }
+  //     direction = -1;
+  //     transitionOff(slider);
+  //     slider.style.transform = "translateX(-200%)";
+  //     setTimeout(() => {
+  //       transitionOn(slider, transitionDuration);
+  //     }, 0);
+  //     transitionEnd = true;
+  //   }
 
-    window.onresize = () => {
-      if (window.matchMedia("(max-width: 540px)").matches) {
-        // initMobile();
-      } else {
-        endMobile();
-      }
-    };
+  //   window.onresize = () => {
+  //     if (window.matchMedia("(max-width: 540px)").matches) {
+  //       // initMobile();
+  //     } else {
+  //       endMobile();
+  //     }
+  //   };
 
 
-  })();
+  // })();
 
   function touchEvent(target, prev, next) {
     const sensitivity = 40;
@@ -385,6 +452,7 @@ document.addEventListener("DOMContentLoaded", function () {
       touchEndSlider
     };
   }
+
   if (document.querySelectorAll("figure.news").length > 0) {
 
     let newsFigure = document.querySelectorAll("figure.news"),
@@ -432,5 +500,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Відображення перших трьох карток за замовчуванням
     showSlides()
   }
+
+
 
 })

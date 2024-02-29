@@ -20,7 +20,13 @@
     font-weight: 400
     font-family: "Roboto"
     resize: none
+    min-height: 80px
+    max-height: 100px
+    +media(1024)
+      min-height: 120px
+      max-height: 150px
   button
+    transition: all .5s ease
     position: relative
     top: 0
     left: 50%
@@ -32,8 +38,9 @@
     transform: translateX(-50%)
     border: none
     cursor: pointer
-    +media(1024)
-      padding: 15px 50px
+    &:hover
+      transform:  translateX(-50%), scale(1.02)
+      box-shadow: 0 5px 5px 2.5px rgba(67,4,4,.2)
 
 .opacity-bg
   display: none
@@ -50,62 +57,57 @@
   display: flex
   justify-content: center
   align-items: center
-  +media(1024)
-    margin-bottom: 15px
 
-.popap-input_block
-  flex-wrap: wrap
-  +media(1024)
-    flex-wrap: nowrap
-
-.flex-popap
-  display: flex
-  justify-content: space-between
-  column-gap: 20px
-
-.label-flex
-  flex-direction: column
+.popap-block-input
+  +media(768)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr
+    column-gap: 20px
 
 .input-popap
   width: 100%
-  margin-bottom: 10px
-  +media(1024)
-    width: 250px
-    margin-bottom: 20px
-
-.question
-  min-height: 80px
-  max-height: 100px
-  +media(1024)
-    min-height: 120px
-    max-height: 150px
-
-.question,
-.input-popap
-  label
-    padding-bottom: 5px
+  max-height: 40px
+  margin-bottom: 30px
 
 .popap-more-info
+  display: none
   position: fixed
-  max-width: 80vw
-  max-height: 90vh
+  width: 85vw
+  height: 90vh
   top: 50%
   left: 50%
   padding: 30px 20px
   transform: translate(-50%, -50%)
   background-color: #f3ece2
   z-index: 12
-  display: none
   +media(1024)
+    width: 60vw
+    height: 90vh
     padding: 50px 40px
+  // label
+  //   margin-bottom: 10px
+
+.scroll-style
+  &::-webkit-scrollbar
+    width: 5px
+    height: 8px
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background-color: rgba(#f3ece2, 0.8)
+
+.center-row-hero
+  align-items: center
 
 .cancel-popap
   position: absolute
   top: 20px
   right: 20px
   cursor: pointer
-  path, svg
-    fill: #9c1a1a
+  svg
+    transition: all .5s ease
+    &:hover
+      transform: scale(1.1)
 
 .radio-btn
   font-size: 12px
@@ -113,6 +115,7 @@
   margin-bottom: 16px
   +media(1024)
     font-size: 18px
+  +media(1440)
     padding-top: 30px
     margin-bottom: 26px
   p
@@ -135,6 +138,7 @@
     &:checked + label
       &::before
         background-color: #9c1a1a
+
 .hero
   position: relative
   margin-bottom: 50px
@@ -168,6 +172,8 @@
       height: 100%
       object-fit: cover
       opacity: 0
+    .slider-img
+      opacity: 1
     img.active
       opacity: 1
 
@@ -175,8 +181,8 @@
     position: relative
     flex: 1 0 50%
     max-width: 100%
-    padding-top: 65px
-    padding-bottom: 55px
+    padding-top: 25vh
+    padding-bottom: 25vh
     color: $fontColorSecond
     text-align: center
     +media(640)
@@ -185,12 +191,12 @@
     +media(1024)
       flex: 0 0 50%
       max-width: 50%
-    +media(1420)
-      padding-top: 110px
-      padding-bottom: 180px
-    +media(1860)
-      padding-top: 150px
-      padding-bottom: 215px
+    // +media(1420)
+    //   padding-top: 110px
+    //   padding-bottom: 180px
+    // +media(1860)
+    //   padding-top: 150px
+    //   padding-bottom: 215px
 
   .tagline
     position: relative
@@ -201,21 +207,26 @@
     +media(425)
       font-size: 3rem
     +media(768)
-      font-size: 3.6rem
+      font-size: 4.6rem
     +media(1420)
-      font-size: 4.4rem
+      font-size: 5.4rem
     +media(1630)
       font-size: $fTitleMain
   .hero__title
     font: 500 1.6rem 'Roboto', Arial, sans-serif
     line-height: 1.5
     +media(1024)
-      font-size: $fTextSecond
+      font-size: 25px
+      // font-size: $fTextSecond
     .text
       position: relative
       display: block
       padding-bottom: 46px
       z-index: 2
+      +media(768)
+        width: 39vw
+      +media(1440)
+        width: 35vw
 
 .open-popap
   position: relative
