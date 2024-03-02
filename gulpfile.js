@@ -45,7 +45,7 @@ export const htmlru = () => {
         "src/pug/ru/*.pug"
     ])
     .pipe(pug({
-        //pretty: true
+        pretty: true
     }))
     .pipe(gulp.dest("docs/ru"))
     .pipe(browserSync.reload({
