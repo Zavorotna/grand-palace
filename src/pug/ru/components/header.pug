@@ -10,11 +10,11 @@ header.header(itemscope itemtype="http://schema.org/WPHeader")
             +svg('phone') 
             strong (098)&nbsp;05-55-500
           span.social-icons.flex-icons
-            a.wsup(href="#")
-              +svg('wsup', 29, 29) 
-            a.telegram(href="#")
-              +svg('telegram', 34, 29) 
-            a.viber(href="#")
+            //- a.wsup(href="#")
+            //-   +svg('wsup', 29, 29) 
+            //- a.telegram(href="#")
+            //-   +svg('telegram', 34, 29) 
+            a.viber(href="viber://chat?number=%2B380980555500")
               +svg('viber', 27, 29)  
       .header-info__item.header__logo(itemscope itemtype="http://schema.org/Organization")
         a.menu__logo(href='./', itemprop='url')
@@ -41,6 +41,9 @@ header.header(itemscope itemtype="http://schema.org/WPHeader")
         li(itemscope itemtype="http://schema.org/SiteNavigationElement")
           a.menu__link(href= location + "#overview", itemprop='url') 
             span(itemprop='name') Преимущества
+        li(itemscope itemtype="http://schema.org/SiteNavigationElement")
+          a.menu__link(href= location + "#progress", itemprop='url') 
+            span(itemprop='name') Галерея
         li(itemscope itemtype="http://schema.org/SiteNavigationElement")
           a.menu__link(href= location + "#progress", itemprop='url') 
             span(itemprop='name') Ход строительства

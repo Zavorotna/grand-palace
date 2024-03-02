@@ -24,47 +24,27 @@ html(lang="uk")
 
   body(tabindex="0")
     .body-wrapper
-      include ../components/vars
+      include components/vars
       include components/mixins
       include components/header
 
-      main.main.container
-        .news-card 
-            .news-gallery 
-                img.general-img(src="img/news-photo1.jpg", alt="новини Grand Palace")
-                .gallery-sm-photoes
-                    .photo-slider 
-                        img(src="img/bg-fitness.jpg", alt="Останні події в ЖК Гранд Палац")
-                    .photo-slider 
-                        img(src="img/galery4.jpg", alt="Актуальні відомості від Grand Palace")
-            .news-description
-                h1 Старт продажу нових черг у grand palace розпочато!
-                hr
-                h2 Старт продажу нових черг Grand Palace розпочато!
-                p Поспішіть  придбати квартиру у ЖК бізнес-класу в центрі Хмельницького. Закритий двір, панорама на місто, підземний паркінг, офісні приміщення, хімчистка, парковка, дитячий майданчик.
-
-                p Ми відкрили продажі на квартири другої черги!
-                .table-news 
-                    .tr-news 
-                        p.td Загальна кількість квартир -&nbsp;
-                        p 354
-                    .tr-news 
-                        p.td Терміни здачі -&nbsp; 
-                        p II квартал 2025 року та II квартал 2026 року.
-                hr
-                .table-news.table-td-styled.tr-news-fix
-                    .tr-news
-                        p.td Завітайте у відділ продажу 
-                        p.news-location
-                            +svg('pin-footer', 100, 10)
-                            | м. Хмельницький вул. Свободи, 14
-                    .tr-news
-                        p.td Або телефонуйте
-                        p 
-                            a.phone-link(href='tel:+380980555500' itemprop='telephone')
-                                +svg('phone', 19, 29)
-                                |(098)&nbsp;055 55 00
-                a.short-description__btn.btn(href="news.html") усі новини
+      main.container-galery.container
+        .galety-header
+            h1.documentation__title.title.title--one-word
+                span.head-line Галерея
+        .button-block
+            a.galery-description__btn.btn(href="№") Фото
+            a.galery-description__btn.btn(href="№") Видео
+        .construction-progress-page
+            .construction-progress__galery-block.row
+                .construction-progress__img-galery
+                  img(src="img/construction-progress1.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress__img-galery
+                  img(src="img/construction-progress2.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress__img-galery
+                  img(src="img/construction-progress3.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress__img-galery
+                  img(src="img/construction-progress4.jpeg" alt="Grand Palace - хід будівництва")
 
     script(src="js/scripts.js")
     include components/footer
