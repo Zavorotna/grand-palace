@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCancel[index].style.display = "block"
         item.style.display = "none"
         if (screenWidth >= 768) {
-          commentBlock.style.paddingBottom = "15%"
+          commentBlock.style.paddingBottom = "5%"
         } else if (screenWidth >= 375 && screenWidth < 425) {
           commentBlock.style.paddingBottom = "75%"
         } else if (screenWidth >= 425 && screenWidth < 768) {
           commentBlock.style.paddingBottom = "50%"
         } else if (screenWidth < 375) {
-          commentBlock.style.paddingBottom = "100%"
+          commentBlock.style.paddingBottom = "60%"
         }
       })
     })
@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     })
   }
+
   //слайдер на відгуки
   window.addEventListener("resize", function () {
     setTimeout(() => {
@@ -194,107 +195,107 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function sliderGalery(carouselBlock, carouselItems, buttonArrow) {
-      const carousel = document.querySelector(carouselBlock)
-      console.log(carousel);
-      let items = [...document.querySelectorAll(carouselItems)]
-  
-      console.log(items);
-      const itemWidth = items[0].offsetWidth
-      let currentIndex = 0,
-        isAnimating = false,
-        touchStartX = 0,
-        touchEndX = 0,
-        intervalId;
-  
-      function updateCarousel() {
-        while (carousel.firstChild) {
-          carousel.removeChild(carousel.firstChild)
-        }
-  
-        const firstClone = items[items.length - 1].cloneNode(true)
-        firstClone.style.transform = `translateX: (-${itemWidth}px)`
-        carousel.insertAdjacentElement("afterbegin", firstClone)
-  
-        for (let i = 0; i < items.length; i++) {
-          const item = items[i].cloneNode(true)
-          item.style.transform = `translateX: (${i} * ${itemWidth}px)`
-          carousel.appendChild(item)
-        }
+    const carousel = document.querySelector(carouselBlock)
+    console.log(carousel);
+    let items = [...document.querySelectorAll(carouselItems)]
+
+    console.log(items);
+    const itemWidth = items[0].offsetWidth
+    let currentIndex = 0,
+      isAnimating = false,
+      touchStartX = 0,
+      touchEndX = 0,
+      intervalId;
+
+    function updateCarousel() {
+      while (carousel.firstChild) {
+        carousel.removeChild(carousel.firstChild)
       }
-  
-      function goToIndex(index) {
-        isAnimating = true
-  
-        const distance = -index * itemWidth
-  
-        currentIndex = (currentIndex + items.length + index) % items.length
-  
-        carousel.style.transition = 'transform .5s ease-in-out'
-        carousel.style.transform = `translateX(${distance}px)`
-  
-        setTimeout(() => {
-          carousel.style.transition = 'none'
-          carousel.style.transform = 'none'
-          isAnimating = false
-          updateCarousel()
-        }, 500)
+
+      const firstClone = items[items.length - 1].cloneNode(true)
+      firstClone.style.transform = `translateX: (-${itemWidth}px)`
+      carousel.insertAdjacentElement("afterbegin", firstClone)
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i].cloneNode(true)
+        item.style.transform = `translateX: (${i} * ${itemWidth}px)`
+        carousel.appendChild(item)
       }
-  
-      function nextSlide() {
-        items.push(items.shift())
-        goToIndex(1)
+    }
+
+    function goToIndex(index) {
+      isAnimating = true
+
+      const distance = -index * itemWidth
+
+      currentIndex = (currentIndex + items.length + index) % items.length
+
+      carousel.style.transition = 'transform .5s ease-in-out'
+      carousel.style.transform = `translateX(${distance}px)`
+
+      setTimeout(() => {
+        carousel.style.transition = 'none'
+        carousel.style.transform = 'none'
+        isAnimating = false
+        updateCarousel()
+      }, 500)
+    }
+
+    function nextSlide() {
+      items.push(items.shift())
+      goToIndex(1)
+    }
+
+    function prevSlide() {
+      items.unshift(items.pop())
+      goToIndex(-1)
+    }
+
+    function handleTouchStart(e) {
+      touchStartX = e.touches[0].clientX
+      stopSliderInterval()
+    }
+
+    function handleTouchMove(e) {
+      touchEndX = e.touches[0].clientX
+    }
+
+    function handleTouchEnd() {
+      const touchDiff = touchStartX - touchEndX
+      if (touchDiff > 50) {
+        nextSlide()
+      } else if (touchDiff < -50) {
+        prevSlide()
       }
-  
-      function prevSlide() {
-        items.unshift(items.pop())
-        goToIndex(-1)
-      }
-  
-      function handleTouchStart(e) {
-        touchStartX = e.touches[0].clientX
+      startSliderInterval()
+    }
+
+    function startSliderInterval() {
+      intervalId = setInterval(nextSlide, 4000) // 4 seconds interval
+    }
+
+    function stopSliderInterval() {
+      clearInterval(intervalId)
+    }
+
+    function setupSlider() {
+      if (window.innerWidth < 600) {
+        updateCarousel()
+        carousel.addEventListener('touchstart', handleTouchStart)
+        carousel.addEventListener('touchmove', handleTouchMove)
+        carousel.addEventListener('touchend', handleTouchEnd)
+        startSliderInterval()
+      } else {
+        carousel.removeEventListener('touchstart', handleTouchStart)
+        carousel.removeEventListener('touchmove', handleTouchMove)
+        carousel.removeEventListener('touchend', handleTouchEnd)
         stopSliderInterval()
       }
-  
-      function handleTouchMove(e) {
-        touchEndX = e.touches[0].clientX
-      }
-  
-      function handleTouchEnd() {
-        const touchDiff = touchStartX - touchEndX
-        if (touchDiff > 50) {
-          nextSlide()
-        } else if (touchDiff < -50) {
-          prevSlide()
-        }
-        startSliderInterval()
-      }
-  
-      function startSliderInterval() {
-        intervalId = setInterval(nextSlide, 4000) // 4 seconds interval
-      }
-  
-      function stopSliderInterval() {
-        clearInterval(intervalId)
-      }
-  
-      function setupSlider() {
-        if (window.innerWidth < 600) {
-          updateCarousel()
-          carousel.addEventListener('touchstart', handleTouchStart)
-          carousel.addEventListener('touchmove', handleTouchMove)
-          carousel.addEventListener('touchend', handleTouchEnd)
-          startSliderInterval()
-        } else {
-          carousel.removeEventListener('touchstart', handleTouchStart)
-          carousel.removeEventListener('touchmove', handleTouchMove)
-          carousel.removeEventListener('touchend', handleTouchEnd)
-          stopSliderInterval()
-        }
-      }
-      setupSlider()    
+    }
+    setupSlider()
   }
 
-  if(screenWidth <= 540 && document.querySelector(".construction-progress")) {
+  if (screenWidth <= 540 && document.querySelector(".construction-progress")) {
     sliderGalery(".construction-progress__galery", ".construction-progress__img", false)
   }
 

@@ -9,7 +9,7 @@
 .comment-block
     transition: all 2s ease
     width: 100%
-    padding: 300px 0 50px
+    padding: 300px 0 0
     font-family: "Roboto"
     box-sizing: border-box
     +media(768)
@@ -64,11 +64,13 @@
 
 .name-block
     h3
-        font-size: 18px
+        font-size: 14px
         line-height: 2em
         text-transform: uppercase
         color: #333
         font-weight: 500
+        +media(768)
+            font-size: 18px
 
 .date-comment
     font-size: 14px
@@ -112,7 +114,7 @@
         fill: #eac83e
 
 .text-comment-block
-    max-height: 100px
+    max-height: 50px
     overflow: hidden
     transition: max-height .5s ease
 
