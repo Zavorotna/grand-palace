@@ -87,11 +87,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCancel[index].style.display = "block"
         item.style.display = "none"
         if (screenWidth >= 768) {
-          commentBlock.style.paddingBottom = "5%"
+          commentBlock.style.paddingBottom = "5px"
         } else if (screenWidth >= 375 && screenWidth < 425) {
-          commentBlock.style.paddingBottom = "75%"
+          commentBlock.style.paddingBottom = "75px"
         } else if (screenWidth >= 425 && screenWidth < 768) {
-          commentBlock.style.paddingBottom = "50%"
+          commentBlock.style.paddingBottom = "50px"
         } else if (screenWidth < 375) {
           commentBlock.style.paddingBottom = "60%"
         }
