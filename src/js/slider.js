@@ -79,6 +79,22 @@ document.addEventListener("DOMContentLoaded", function () {
       desriptMore = document.querySelectorAll(".text-comment-block"),
       commentBlock = document.querySelector(".comment-block")
 
+    let sizeComments = [] // масив для розмірів коментарів
+
+    desriptMore.forEach(comment => {
+      const sizeComment = comment.scrollHeight
+      sizeComments.push(sizeComment)
+    })
+    sizeComments.forEach((size, index) => {
+      if (size > 50) {
+        btnReadMore[index].style.display = "block"
+        btnCancel[index].style.display = "none"
+      } else {
+        btnReadMore[index].style.display = "none"
+        btnCancel[index].style.display = "none"
+      }
+    })
+    console.log(sizeComments);
     btnReadMore.forEach((item, index) => {
       item.addEventListener("click", function (e) {
         console.log(item)
@@ -87,11 +103,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCancel[index].style.display = "block"
         item.style.display = "none"
         if (screenWidth >= 768) {
-          commentBlock.style.paddingBottom = "5px"
+          // commentBlock.style.paddingBottom = "5%"
         } else if (screenWidth >= 375 && screenWidth < 425) {
-          commentBlock.style.paddingBottom = "75px"
+          commentBlock.style.paddingBottom = "75%"
         } else if (screenWidth >= 425 && screenWidth < 768) {
-          commentBlock.style.paddingBottom = "50px"
+          commentBlock.style.paddingBottom = "50%"
         } else if (screenWidth < 375) {
           commentBlock.style.paddingBottom = "60%"
         }
@@ -113,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     setTimeout(() => {
       slaiderComment()
-
     }, 100)
   })
   slaiderComment()
