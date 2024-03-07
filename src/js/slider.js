@@ -519,4 +519,23 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
   })
+
+  // galery
+  const imgGalery = document.querySelector(".construction-progress_galery-block"),
+    videoGalery = document.querySelector(".construction-progress_galery-video"),
+    ctaPhoto = document.querySelector(".photo"),
+    ctaVideo = document.querySelector(".video")
+
+    ctaPhoto.addEventListener("click", function (e){
+      e.preventDefault();
+      imgGalery.style.display = "grid";
+      videoGalery.style.display = "none";
+    });
+    
+    ctaVideo.addEventListener("click", function (e){
+      e.preventDefault();
+      imgGalery.style.display = "none";
+      videoGalery.style.display = "grid";
+    });
+
 })

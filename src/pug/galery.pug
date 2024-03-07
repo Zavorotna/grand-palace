@@ -33,18 +33,28 @@ html(lang="uk")
             h1.documentation__title.title.title--one-word
                 span.head-line Галерея
         .button-block
-            button.galery-description__btn.btn(href="№") Фото
-            button.galery-description__btn.btn(href="№") Відео
+            button.galery-description__btn.btn.photo(href="№") Фото
+            button.galery-description__btn.btn.video(href="№") Відео
         .construction-progress-page
-            .construction-progress__galery-block.row
-                .construction-progress__img-galery
+            .construction-progress_galery-block
+                .construction-progress_img-galery
                   img(src="img/construction-progress1.jpeg" alt="Grand Palace - хід будівництва")
-                .construction-progress__img-galery
+                .construction-progress_img-galery
                   img(src="img/construction-progress2.jpeg" alt="Grand Palace - хід будівництва")
-                .construction-progress__img-galery
+                .construction-progress_img-galery
                   img(src="img/construction-progress3.jpeg" alt="Grand Palace - хід будівництва")
-                .construction-progress__img-galery
+                .construction-progress_img-galery
                   img(src="img/construction-progress4.jpeg" alt="Grand Palace - хід будівництва")
+        .construction-progress-page-video
+            .construction-progress_galery-video
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
     script(src="js/scripts.js")
     include components/footer
