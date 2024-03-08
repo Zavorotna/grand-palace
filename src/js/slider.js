@@ -521,21 +521,36 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   // galery
-  const imgGalery = document.querySelector(".construction-progress_galery-block"),
-    videoGalery = document.querySelector(".construction-progress_galery-video"),
-    ctaPhoto = document.querySelector(".photo"),
-    ctaVideo = document.querySelector(".video")
+  // const imgGalery = document.querySelector(".construction-progress_galery-block"),
+  //   videoGalery = document.querySelector(".construction-progress_galery-video"),
+  //   ctaPhoto = document.querySelector(".photo"),
+  //   ctaVideo = document.querySelector(".video")
 
-    ctaPhoto.addEventListener("click", function (e){
-      e.preventDefault();
-      imgGalery.style.display = "grid";
-      videoGalery.style.display = "none";
-    });
+  //   ctaPhoto.addEventListener("click", function (e){
+  //     e.preventDefault();
+  //     imgGalery.style.display = "grid";
+  //     videoGalery.style.display = "none";
+  //   });
     
-    ctaVideo.addEventListener("click", function (e){
-      e.preventDefault();
-      imgGalery.style.display = "none";
-      videoGalery.style.display = "grid";
+  //   ctaVideo.addEventListener("click", function (e){
+  //     e.preventDefault();
+  //     imgGalery.style.display = "none";
+  //     videoGalery.style.display = "grid";
+  //   });
+
+  if (document.getElementById("galleryPhotos")) {
+    let photoToggle = document.getElementById("photoToggle"),
+        videoToggle = document.getElementById("videoToggle"),
+        galleryPhotos = document.getElementById("galleryPhotos"),
+        galleryVideos = document.getElementById("galleryVideos");
+    photoToggle.addEventListener('click', function () {
+        galleryVideos.style.display = 'none';
+        galleryPhotos.style.display = 'block';
     });
+    videoToggle.addEventListener('click', function () {
+        galleryPhotos.style.display = 'none';
+        galleryVideos.style.display = 'block';
+    });
+}
 
 })

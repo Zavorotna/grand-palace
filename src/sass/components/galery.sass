@@ -1,5 +1,8 @@
-.container-galery 
+#galleryVideos
+    display: none
+.container-galery
     padding-top: 80px
+    width: 100% !important
 
 .galety-header
     text-align: center
@@ -14,41 +17,38 @@
     padding: 10px 30px
 
 .construction-progress-page
-    margin-bottom: 100px
+    margin-bottom: 230px
 
-.construction-progress_galery-block
+.construction-progress_galery
     display: grid
-    column-gap: 20px
-    row-gap: 20px
-    grid-template-columns: repeat(2, minmax(0, 1fr))
-    +media(768)
-        grid-template-columns: repeat(3, minmax(0, 1fr))
-    +media(1024)
-        grid-template-columns: repeat(4, minmax(0, 1fr))
-
-.construction-progress_img-galery
-    img
-        width: 100%
-        height: 100%
-        object-fit: cover
-
-.construction-progress_galery-video
-    display: none
-    width: 100%
-    column-gap: 20px
-    row-gap: 20px
-    margin-bottom: 80px
     grid-template-columns: repeat(1, minmax(0, 1fr))
-    +media(1024)
+    +media(640)
         grid-template-columns: repeat(2, minmax(0, 1fr))
-
-.construction-video-galery
-    width: 100%
-    min-width: 90vw
-    height: 400px
     +media(1024)
-        min-width: 43vw
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    +media(1280)
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    gap: 2rem
+    img,
     iframe
         width: 100%
         height: 100%
+        object-position: top
         object-fit: cover
+        // object-fit: contain
+
+.construction-progress_img-galery
+    max-height: 300px
+
+.construction-video-galery
+    position: relative
+    padding-top: 56.25%
+    iframe
+        position: absolute
+        left: 0
+        top: 0
+.construction-progress_no-galery
+    grid-column: span 4 / span 4
+    justify-self: center
+
+

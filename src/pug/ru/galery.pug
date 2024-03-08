@@ -33,19 +33,31 @@ html(lang="uk")
             h1.documentation__title.title.title--one-word
                 span.head-line Галерея
         .button-block
-            button.galery-description__btn.btn(href="№") Фото
-            button.galery-description__btn.btn(href="№") Видео
-        .construction-progress-page
-            .construction-progress__galery-block.row
-                .construction-progress__img-galery
-                  img(src="../img/construction-progress1.jpeg" alt="Grand Palace - хід будівництва")
-                .construction-progress__img-galery
-                  img(src="../img/construction-progress2.jpeg" alt="Grand Palace - хід будівництва")
-                .construction-progress__img-galery
-                  img(src="../img/construction-progress3.jpeg" alt="Grand Palace - хід будівництва")
-                .construction-progress__img-galery
-                  img(src="../img/construction-progress4.jpeg" alt="Grand Palace - хід будівництва")
+            button#photoToggle.galery-description__btn.btn.photo(href="№") Фото
+            button#videoToggle.galery-description__btn.btn.video(href="№") Видео
+        .construction-progress-page#galleryPhotos
+            .construction-progress_galery
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress1.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress2.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress3.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress4.jpeg" alt="Grand Palace - хід будівництва")
+            //- h2.construction-progress_no-galery Немає фото
+        .construction-progress-page#galleryVideos
+            .construction-progress_galery
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            //- h2.construction-progress_no-galery Немає відео
 
-    script(src="js/scripts.js")
+    script(src="../js/scripts.js")
     include components/footer
 
