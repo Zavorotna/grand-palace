@@ -1,36 +1,3 @@
-section.residential-advantages(itemscope, itemtype='http://schema.org/RealEstateAgent')
-  .title-wrap
-    h2.residential-advantages__title.title
-      span.head-line Преимущества для
-      |  жизни
-  .advantages
-    .container
-      .advantages__items.row(itemscope, itemtype='http://schema.org/ItemList')
-        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
-          .advantages__img
-            +svg("infrastructure", itemprop='image')
-          p.advantages__title(itemprop='name')
-            | Собственная<br>инфраструктура
-        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
-          .advantages__img
-            +svg("rest-area", itemprop='image')
-          p.advantages__title(itemprop='name')
-            | Зона отдыха
-        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
-          .advantages__img
-            +svg("playground", itemprop='image')
-          p.advantages__title(itemprop='name')
-            | Детская площадка
-        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
-          .advantages__img
-            +svg("underground-parking", itemprop='image')
-          p.advantages__title(itemprop='name')
-            | Подземная парковка
-        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
-          .advantages__img
-            +svg("location-center", itemprop='image')
-          p.advantages__title(itemprop='name')
-            | Расположение<br>в центре города
 section.comercial-galery.container
   .galery-block
     .picture-galery 
@@ -64,3 +31,36 @@ section.comercial-galery.container
     .text-block-galery
       .number 04
       p.text-galery Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+section.residential-advantages(itemscope, itemtype='http://schema.org/RealEstateAgent')
+  .title-wrap
+    h2.residential-advantages__title.title
+      span.head-line Преимущества для
+      |  жизни
+  .advantages
+    .container
+      .advantages__items.row(itemscope, itemtype='http://schema.org/ItemList')
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
+          .advantages__img
+            +svg("infrastructure", itemprop='image')
+          p.advantages__title(itemprop='name')
+            | Собственная<br>инфраструктура
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
+          .advantages__img
+            +svg("rest-area", itemprop='image')
+          p.advantages__title(itemprop='name')
+            | Зона отдыха
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
+          .advantages__img
+            +svg("playground", itemprop='image')
+          p.advantages__title(itemprop='name')
+            | Детская площадка
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
+          .advantages__img
+            +svg("underground-parking", itemprop='image')
+          p.advantages__title(itemprop='name')
+            | Подземная парковка
+        .advantages__item.col-20.col-sm(itemscope, itemtype='http://schema.org/ListItem')
+          .advantages__img
+            +svg("location-center", itemprop='image')
+          p.advantages__title(itemprop='name')
+            | Расположение<br>в центре города
