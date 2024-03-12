@@ -79,6 +79,22 @@ document.addEventListener("DOMContentLoaded", function () {
       desriptMore = document.querySelectorAll(".text-comment-block"),
       commentBlock = document.querySelector(".comment-block")
 
+    let sizeComments = [] // масив для розмірів коментарів
+
+    desriptMore.forEach(comment => {
+      const sizeComment = comment.scrollHeight
+      sizeComments.push(sizeComment)
+    })
+    sizeComments.forEach((size, index) => {
+      if (size > 50) {
+        btnReadMore[index].style.display = "block"
+        btnCancel[index].style.display = "none"
+      } else {
+        btnReadMore[index].style.display = "none"
+        btnCancel[index].style.display = "none"
+      }
+    })
+    console.log(sizeComments);
     btnReadMore.forEach((item, index) => {
       item.addEventListener("click", function (e) {
         console.log(item)
@@ -87,13 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCancel[index].style.display = "block"
         item.style.display = "none"
         if (screenWidth >= 768) {
-          commentBlock.style.paddingBottom = "15%"
+          // commentBlock.style.paddingBottom = "5%"
         } else if (screenWidth >= 375 && screenWidth < 425) {
           commentBlock.style.paddingBottom = "75%"
         } else if (screenWidth >= 425 && screenWidth < 768) {
           commentBlock.style.paddingBottom = "50%"
         } else if (screenWidth < 375) {
-          commentBlock.style.paddingBottom = "100%"
+          commentBlock.style.paddingBottom = "60%"
         }
       })
     })
@@ -108,11 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     })
   }
+
   //слайдер на відгуки
   window.addEventListener("resize", function () {
     setTimeout(() => {
       slaiderComment()
-
     }, 100)
   })
   slaiderComment()
@@ -192,14 +208,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   }
-  // слайдер на прогрем будівництва
-  if (screenWidth <= 540) {
-    const carousel = document.querySelector('.construction-progress__galery')
 
-    let items = [...document.querySelectorAll(".construction-progress__img")]
+  function sliderGalery(carouselBlock, carouselItems, buttonArrow) {
+    const carousel = document.querySelector(carouselBlock)
+    console.log(carousel);
+    let items = [...document.querySelectorAll(carouselItems)]
 
+    console.log(items);
     const itemWidth = items[0].offsetWidth
-
     let currentIndex = 0,
       isAnimating = false,
       touchStartX = 0,
@@ -277,11 +293,6 @@ document.addEventListener("DOMContentLoaded", function () {
       clearInterval(intervalId)
     }
 
-    function resetInterval() {
-      stopSliderInterval()
-      startSliderInterval()
-    }
-
     function setupSlider() {
       if (window.innerWidth < 600) {
         updateCarousel()
@@ -296,13 +307,11 @@ document.addEventListener("DOMContentLoaded", function () {
         stopSliderInterval()
       }
     }
-
     setupSlider()
+  }
 
-    // window.addEventListener('resize', setupSlider)
-    // window.addEventListener('mousemove', resetInterval)
-    // window.addEventListener('click', resetInterval)
-
+  if (screenWidth <= 540 && document.querySelector(".construction-progress")) {
+    sliderGalery(".construction-progress__galery", ".construction-progress__img", false)
   }
 
   //popup
@@ -510,4 +519,38 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
   })
+
+  // galery
+  // const imgGalery = document.querySelector(".construction-progress_galery-block"),
+  //   videoGalery = document.querySelector(".construction-progress_galery-video"),
+  //   ctaPhoto = document.querySelector(".photo"),
+  //   ctaVideo = document.querySelector(".video")
+
+  //   ctaPhoto.addEventListener("click", function (e){
+  //     e.preventDefault();
+  //     imgGalery.style.display = "grid";
+  //     videoGalery.style.display = "none";
+  //   });
+    
+  //   ctaVideo.addEventListener("click", function (e){
+  //     e.preventDefault();
+  //     imgGalery.style.display = "none";
+  //     videoGalery.style.display = "grid";
+  //   });
+
+  if (document.getElementById("galleryPhotos")) {
+    let photoToggle = document.getElementById("photoToggle"),
+        videoToggle = document.getElementById("videoToggle"),
+        galleryPhotos = document.getElementById("galleryPhotos"),
+        galleryVideos = document.getElementById("galleryVideos");
+    photoToggle.addEventListener('click', function () {
+        galleryVideos.style.display = 'none';
+        galleryPhotos.style.display = 'block';
+    });
+    videoToggle.addEventListener('click', function () {
+        galleryPhotos.style.display = 'none';
+        galleryVideos.style.display = 'block';
+    });
+}
+
 })

@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let language = localStorage.getItem("lang") || (window.navigator ? (window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage) : "uk");
   language = language.substring(0, 2);
+  console.log(language);
+  changeLocation(language)
 
   function changeLocation(lang) {
     if (lang === "ru" && !/^\/ru/.test(location.pathname)) {

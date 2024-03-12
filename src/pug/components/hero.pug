@@ -16,17 +16,17 @@
             p
               label(for="name") Ім'я*
             p
-              input(type="text" id="name" name="name") 
+              input(type="text" id="name" name="name" required) 
           .input-popap
             p
               label.validation(for="phoneValidation") Номер телефону*
             p
-              input.phone-validation#phoneValidation(type="tel" name="phone")
+              input.phone-validation#phoneValidation(type="tel" name="phone" required)
             .incorect-number-test.d-none 
               p *невірний формат вводу данних
       .question
         p
-          label(for="question")  Запитання
+          label(for="question" required)  Запитання
         p
           textarea#question(name="question", cols="30", rows="10") 
       .radio-btn

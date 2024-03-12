@@ -1,0 +1,63 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0")
+    link(rel="stylesheet" href="../css/styles.css")
+    title Grand Palace - старт продажу нової черги
+    meta(name="description" content="")
+    meta(name="keywords" content="")
+    meta(name="author" content="Grand Palace")
+    meta(name="publisher" content="Grand Palace")
+    meta(name="robots" content="index follow")  
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Roboto:wght@400;500&display=swap' rel='stylesheet')
+    link(rel='icon' href='img/favicon.ico')
+    link(rel='canonical' href='https://www.grandpalace.km.ua/one-news.html')
+    meta(property="og:title" content="Grand Palace - старт продажу нової черги")
+    meta(property="og:description" content="")
+    meta(property="og:image" content="img/logo.jpg")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://www.grandpalace.km.ua/one-news.html")
+
+  body(tabindex="0")
+    .body-wrapper
+      include ../components/vars
+      include components/mixins
+      include components/header
+
+      main.container-galery.container
+        .galety-header
+            h1.documentation__title.title.title--one-word
+                span.head-line Галерея
+        .button-block
+            button#photoToggle.galery-description__btn.btn.photo(href="№") Фото
+            button#videoToggle.galery-description__btn.btn.video(href="№") Видео
+        .construction-progress-page#galleryPhotos
+            .construction-progress_galery
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress1.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress2.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress3.jpeg" alt="Grand Palace - хід будівництва")
+                .construction-progress_img-galery
+                  img.w-full.h-full.object-contain.object-top(src="../img/construction-progress4.jpeg" alt="Grand Palace - хід будівництва")
+            //- h2.construction-progress_no-galery Немає фото
+        .construction-progress-page#galleryVideos
+            .construction-progress_galery
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                .construction-video-galery
+                  <iframe src="https://www.youtube.com/embed/p2O6FOKwDrU?si=q2wJ7_sWt_HOc8uA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            //- h2.construction-progress_no-galery Немає відео
+
+    script(src="../js/scripts.js")
+    include components/footer
+

@@ -9,11 +9,9 @@
 .comment-block
     transition: all 2s ease
     width: 100%
-    padding: 300px 0 50px
+    padding: 250px 0 10px
     font-family: "Roboto"
     box-sizing: border-box
-    +media(768)
-        padding: 250px 0 50px
 
 .carousel
     position: relative
@@ -47,13 +45,13 @@
     position: absolute
     top: 0
     width: 100%
+    min-height: 210px
     padding: 25px 
     background-color: #faf7f3
     border: 1px solid #333
     box-sizing: border-box
     +media(1024)
         width: 42vw
-
 
 .img-circle
     width: 76px
@@ -64,11 +62,13 @@
 
 .name-block
     h3
-        font-size: 18px
+        font-size: 14px
         line-height: 2em
         text-transform: uppercase
         color: #333
         font-weight: 500
+        +media(768)
+            font-size: 18px
 
 .date-comment
     font-size: 14px
@@ -112,7 +112,7 @@
         fill: #eac83e
 
 .text-comment-block
-    max-height: 100px
+    max-height: 50px
     overflow: hidden
     transition: max-height .5s ease
 
